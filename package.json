@@ -4,7 +4,12 @@
   "description": "Wrapper for the Call Of Duty API.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "capilog"
+    "postinstall": "capilog",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node test/run.js",
+    "dev": "NODE_ENV=development ",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -31,9 +36,13 @@
     "url": "https://github.com/sponsors/Lierrmm"
   },
   "dependencies": {
+    "@types/node": "^14.0.27",
+    "@types/uniqid": "^5.2.0",
     "axios": "^0.19.2",
     "axios-rate-limit": "^1.2.1",
     "capi-insights": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "typescript": "^3.9.7",
     "uniqid": "^5.2.0"
   }
 }

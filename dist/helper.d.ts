@@ -1,0 +1,31 @@
+import { AxiosResponse, AxiosInstance } from "axios";
+import HelperInterface from "./helper.interface";
+import { CODAPICONFIG } from "./index.interface";
+export default class Helper implements HelperInterface {
+    [propName: string]: any;
+    protected _BASEURL: string;
+    protected _LOGINURL: string;
+    protected _PROFILEURL: string;
+    protected _LOGGEDIN: boolean;
+    protected _DEBUG: boolean;
+    protected readonly _USERAGENT: string;
+    protected readonly _BASECOOKIE: string;
+    _ssoCOOKIE: string;
+    protected userEmail: string;
+    protected userPassword: string;
+    protected userPlatform: string;
+    protected platformUser: string;
+    protected httpI: AxiosInstance | null;
+    protected loginHttp: AxiosInstance | null;
+    constructor(config: CODAPICONFIG);
+    get loggedIn(): boolean;
+    get debug(): boolean;
+    buildUri(str: string): string;
+    buildProfileUri(str: string): string;
+    cleanClientName(gamertag: string): string;
+    sendRequestUserInfoOnly(url: string): Promise<AxiosResponse>;
+    sendRequest(url: string): Promise<AxiosResponse>;
+    sendPostRequest(url: string, data: object): Promise<AxiosResponse>;
+    postReq(url: string, data: object, headers: object | null): Promise<any>;
+    apiErrorHandling(response: AxiosResponse | any): string;
+}

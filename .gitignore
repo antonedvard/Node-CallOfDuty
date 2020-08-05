@@ -63,3 +63,6 @@ typings/
 test.js
 _.js
 *.json
+
+dist/
+dist/*
