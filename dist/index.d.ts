@@ -18,5 +18,6 @@ declare class CodAPI extends Helper implements CodAPIInterface {
         friends: (gamertag?: string, platform?: string) => Promise<any>;
     };
     search(gamertag?: string, platform?: string): Promise<any>;
+    getPurchasable(platform?: string): Promise<any>;
 }
 export = CodAPI;

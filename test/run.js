@@ -20,9 +20,9 @@ async function start() {
   // epic.WWII.test();
   // epic.BO3.test();
   // epic.BO4.test();
-  epic.MW.warzone.test();
+  // epic.MW.warzone.test();
 
-  console.log(await epic.me.getCodPoints());
+  console.log(await epic.me.info());
 
   // const mpData = await epic.MWcombatmp();
   // console.log(mpData);

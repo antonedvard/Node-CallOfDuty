@@ -40,7 +40,6 @@ class CodAPI extends helper_1.default {
                 let authHeader = response.data.authHeader;
                 this.httpI.defaults.headers.common.Authorization = `bearer ${authHeader}`;
                 this.httpI.defaults.headers.common.x_cod_device_id = `${deviceId}`;
-                console.log(response);
                 this.postReq(`${this._LOGINURL}login`, {
                     email: this.userEmail,
                     password: this.userPassword,
@@ -48,12 +47,19 @@ class CodAPI extends helper_1.default {
                     .then((data) => {
                     if (!data.success) {
                         this._LOGGEDIN = false;
-                        throw Error("401 - Unauthorized. Incorrect username or password.");
+                        reject({
+                            status: 401,
+                            msg: "Unauthorized. Incorrect username or password."
+                        });
                     }
                     this._ssoCOOKIE = data.s_ACT_SSO_COOKIE;
                     this.httpI.defaults.headers.common.Cookie = `${this._BASECOOKIE}rtkn=${data.rtkn};ACT_SSO_COOKIE=${data.s_ACT_SSO_COOKIE};atkn=${data.atkn};`;
                     this._LOGGEDIN = true;
-                    resolve("200 - OK. Log in successful.");
+                    console.log(this._LOGGEDIN);
+                    resolve({
+                        status: 200,
+                        msg: "200 - OK. Log in successful."
+                    });
                 })
                     .catch((error) => {
                     if (typeof error === "string")
@@ -91,9 +97,6 @@ class CodAPI extends helper_1.default {
         // GAME: Call of Duty Infinite Warfare: COD IW: IW;
         const game = "IW";
         return {
-            test: () => {
-                console.log(game);
-            },
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 const game = "IW";
                 let url = this.buildUri(`crm/cod/v2/title/iw/platform/${platform}/gamer/${gamertag}/profile/`);
@@ -107,9 +110,6 @@ class CodAPI extends helper_1.default {
         // GAME: Call of Duty World War II: COD WWII;
         const game = "WWII";
         return {
-            test: () => {
-                console.log(game);
-            },
             friends: () => __awaiter(this, void 0, void 0, function* () { }),
             leaderboard: () => __awaiter(this, void 0, void 0, function* () { }),
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
@@ -130,9 +130,6 @@ class CodAPI extends helper_1.default {
         // GAME: Call of Duty Black Ops 3: COD BO3;
         const game = "BO3";
         const InterFace = {
-            test: () => {
-                console.log(game);
-            },
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 let url = this.buildUri(`crm/cod/v2/title/bo3/platform/${platform}/gamer/${gamertag}/profile/`);
                 return this.getGameData(gamertag, platform, game, url);
@@ -495,8 +492,8 @@ class CodAPI extends helper_1.default {
     get me() {
         return {
             info: () => {
-                let url = this.buildProfileUri(`cod/userInfo/${this._ssoCookie}`);
-                return this.getGameData(this.platformUser, this.platform, "", url);
+                let url = this.buildProfileUri(`cod/userInfo/${this._ssoCOOKIE}`);
+                return this.sendRequestUserInfoOnly(url);
             },
             presence: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 gamertag = this.cleanClientName(gamertag);
@@ -565,7 +562,6 @@ class CodAPI extends helper_1.default {
         };
     }
     search(gamertag = this.platformUser, platform = this.userPlatform) {
-        const game = "";
         if (platform === "battle" ||
             platform == "uno" ||
             platform == "all") {
@@ -575,8 +571,41 @@ class CodAPI extends helper_1.default {
             platform = this.__platforms["uno"];
         }
         let url = this.buildUri(`crm/cod/v2/platform/${platform}/username/${gamertag}/search`);
-        return this.getGameData(gamertag, platform, game, url);
+        return this.getGameData(gamertag, platform, "", url);
     }
+    // sendGift(
+    //   gamertag: string,
+    //   recipientUnoId: string,
+    //   senderUnoId: string = this.process.env.e,
+    //   itemSku: number = "432000",
+    //   sendingPlatform = config.platform,
+    //   platform = config.platform,
+    // ): Promise<any> {
+    //   return new Promise((resolve, reject) => {
+    //     let data = {
+    //       recipientUnoId: recipientUnoId,
+    //       senderUnoId: senderUnoId,
+    //       sendingPlatform: sendingPlatform,
+    //       sku: Number(itemSku),
+    //     };
+    //     gamertag = _helpers.cleanClientName(gamertag);
+    //     let urlInput = _helpers.buildUri(
+    //       `gifting/v1/title/mw/platform/${platform}/gamer/${gamertag}`,
+    //     );
+    //     _helpers
+    //       .sendPostRequest(urlInput, data)
+    //       .then(data => resolve(data))
+    //       .catch(e => reject(e));
+    //   });
+    // };
+    getPurchasable(platform = this.userPlatform) {
+        if (platform === "uno" || platform === "acti") {
+            platform = this.__platforms["uno"];
+        }
+        let url = this.buildUri(`inventory/v1/title/mw/platform/${platform}/purchasable`);
+        return this.getGameData(this.platformUser, this.userPlatform, "", url);
+    }
+    ;
 }
 module.exports = CodAPI;
 //# sourceMappingURL=index.js.map

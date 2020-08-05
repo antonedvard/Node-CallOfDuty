@@ -16,7 +16,7 @@ declare class HelperInterface {
     data: object,
     headers: object | null,
   ): Promise<any>;
-  apiErrorHandling(response: AxiosResponse): string;
+  apiErrorHandling(response: AxiosResponse): object;
   [propName: string]: any;
 }
 

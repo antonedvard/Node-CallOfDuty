@@ -84,7 +84,7 @@ class Helper {
     }
     sendRequestUserInfoOnly(url) {
         return new Promise((resolve, reject) => {
-            if (!this.LOGGEDIN)
+            if (!this._LOGGEDIN)
                 reject("Not Logged In.");
             this.httpI.get(url)
                 .then((response) => {

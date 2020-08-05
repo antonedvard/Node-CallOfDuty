@@ -64,6 +64,7 @@ class CodAPI extends Helper implements CodAPIInterface {
               this._ssoCOOKIE = data.s_ACT_SSO_COOKIE;
               (this.httpI as AxiosInstance).defaults.headers.common.Cookie = `${this._BASECOOKIE}rtkn=${data.rtkn};ACT_SSO_COOKIE=${data.s_ACT_SSO_COOKIE};atkn=${data.atkn};`;
               this._LOGGEDIN = true;
+              console.log(this._LOGGEDIN);
               resolve({
                 status: 200,
                 msg: "200 - OK. Log in successful."
@@ -655,9 +656,9 @@ class CodAPI extends Helper implements CodAPIInterface {
     return {
       info: (): Promise<any> => {
         let url = this.buildProfileUri(
-          `cod/userInfo/${this._ssoCookie}`,
+          `cod/userInfo/${this._ssoCOOKIE}`,
         );
-        return this.getGameData(this.platformUser, this.platform, "", url)
+        return this.sendRequestUserInfoOnly(url);
       },
       presence: (
         gamertag: string = this.platformUser,

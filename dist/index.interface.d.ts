@@ -57,13 +57,19 @@ export interface SubGameInterface extends Object {
     battle?(): Promise<any>;
     analysis?(): Promise<any>;
 }
-export interface MWGameInterface extends SubGameInterface {
-    readonly warzone: WarzoneInterface;
-    readonly multiplayer: MultiplayerInterface;
+export interface IWInterface extends SubGameInterface {
+}
+export interface WWIIInterface extends SubGameInterface {
+}
+export interface BO3Interface extends SubGameInterface {
 }
 export interface BO4Interface extends SubGameInterface {
     readonly multiplayer: MultiplayerInterface;
     readonly zombie: ZombieInterface;
+}
+export interface MWGameInterface extends SubGameInterface {
+    readonly warzone: WarzoneInterface;
+    readonly multiplayer: MultiplayerInterface;
 }
 export interface BattlePassInterface extends Object {
     loot(): Promise<any>;
