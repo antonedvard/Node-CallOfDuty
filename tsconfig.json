@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": ["axios", "node", "uniqid"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
