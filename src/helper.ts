@@ -23,6 +23,7 @@ export default class Helper implements HelperInterface {
   protected userPassword: string = "";
   protected userPlatform: string = "";
   protected platformUser: string = "";
+  protected activisionId: string = "";
 
   protected httpI: AxiosInstance | null = null;
   protected loginHttp: AxiosInstance | null = null;
@@ -32,6 +33,7 @@ export default class Helper implements HelperInterface {
     this.userPassword = config.password
     this.userPlatform = config.platform === undefined ? "psn" : config.platform;
     this.platformUser = config.platformUser === undefined ? "" : config.platformUser;
+    this.activisionId = config.activisionId === undefined ? "" : config.activisionId;
 
     this._DEBUG = process.env.DEBUG === "true" || config.debug === true ? true : false;
 

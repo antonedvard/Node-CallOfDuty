@@ -1,5 +1,5 @@
-import {AxiosResponse} from "axios";
-import CODAPIINTERFACE, { CODAPICONFIG} from "./index.interface";
+import { AxiosResponse } from "axios";
+import { CODAPICONFIG } from "./index.interface";
 
 declare class HelperInterface {
   constructor(config: CODAPICONFIG);

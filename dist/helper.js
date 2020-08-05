@@ -19,12 +19,14 @@ class Helper {
         this.userPassword = "";
         this.userPlatform = "";
         this.platformUser = "";
+        this.activisionId = "";
         this.httpI = null;
         this.loginHttp = null;
         this.userEmail = config.email;
         this.userPassword = config.password;
         this.userPlatform = config.platform === undefined ? "psn" : config.platform;
         this.platformUser = config.platformUser === undefined ? "" : config.platformUser;
+        this.activisionId = config.activisionId === undefined ? "" : config.activisionId;
         this._DEBUG = process.env.DEBUG === "true" || config.debug === true ? true : false;
         this.httpI = axios_1.default.create({
             headers: {

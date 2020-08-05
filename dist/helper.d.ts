@@ -15,6 +15,7 @@ export default class Helper implements HelperInterface {
     protected userPassword: string;
     protected userPlatform: string;
     protected platformUser: string;
+    protected activisionId: string;
     protected httpI: AxiosInstance | null;
     protected loginHttp: AxiosInstance | null;
     constructor(config: CODAPICONFIG);

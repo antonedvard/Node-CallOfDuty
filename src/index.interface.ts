@@ -8,28 +8,102 @@ export interface RATELIMITCONFIG {
   maxRPS?: number,
 }
 
-export type Platforms = "battle" | "steam" | "psn" | "xbl" | "acti" | "uno" | "unoid" | "all"; 
+export type Platforms = "battle" | "steam" | "psn" | "xbl" | "acti" | "uno" | "unoid" | "all";
 
 export interface CODAPICONFIG extends Object {
   platform?: Platforms;
   platformUser?: string;
   email: string;
   password: string;
+  activisionId: string;
   ratelimit?: RATELIMITCONFIG;
   debug?: boolean;
 }
 
-export interface PlayerDataInterface{
-  
+export interface PlayerDataInterface {
+
 }
 
-export interface DateForDataInterface{
+export interface DateForDataInterface {
   start: number;
   end: number;
 }
 
-export default interface CodAPIInterface extends HelperInterface{
+export interface WarzoneInterface extends Object {
+  test?(): any;
+  stats(gamertag: string, platform: string): Promise<any>;
+  combat(gamertag: string, platform: string): Promise<any>;
+  friends(): Promise<any>;
+}
+
+export interface ZombieInterface extends Object {
+  test?(): any;
+  stats(gamertag: string, platform: string): Promise<any>;
+  combat(gamertag: string, platform: string): Promise<any>;
+}
+
+export interface MultiplayerInterface extends Object {
+  test?(): any;
+  stats(gamertag: string, platform: string): Promise<any>;
+  combat(gamertag: string, platform: string): Promise<any>;
+  maps?(): Promise<any>;
+}
+
+export interface BlackoutInterface extends Object {
+  test?(): any;
+  stats(gamertag: string, platform: string): Promise<any>;
+  combat(gamertag: string, platform: string): Promise<any>;
+}
+
+export interface SubGameInterface extends Object {
+  test?(): any;
+  warzone?: WarzoneInterface;
+  zombie?: ZombieInterface;
+  multiplayer?: MultiplayerInterface;
+  stats(gamertag?: string, platform?: string): Promise<any>;
+  achievements?(): Promise<any>;
+  friends(): Promise<any>;
+  leaderboard(): Promise<any>;
+  community?(): Promise<any>;
+  loot?(): Promise<any>;
+  weekly?(): Promise<any>;
+  battle?(): Promise<any>;
+  analysis?(): Promise<any>;
+}
+
+export interface MWGameInterface extends SubGameInterface {
+  readonly warzone: WarzoneInterface;
+  readonly multiplayer: MultiplayerInterface;
+}
+
+export interface BO4Interface extends SubGameInterface {
+  readonly multiplayer: MultiplayerInterface;
+  readonly zombie: ZombieInterface;
+}
+
+export interface BattlePassInterface extends Object {
+  loot(): Promise<any>;
+  info(): Promise<any>;
+}
+
+export interface LoggedInUserInterface extends Object {
+  info(): Promise<any>;
+  presence(): Promise<any>;
+  loggedInIds(): Promise<any>;
+  giftableFriends(unoId: string,
+    itemSku: number,): Promise<any>;
+  purchaseItem(): Promise<any>;
+  connectedAccounts(): Promise<any>;
+  getCodPoints(): Promise<any>;
+}
+
+export default interface CodAPIInterface extends HelperInterface {
   login(): Promise<any>;
-  MWcombatwz(gamertag: string, platform: string, date: DateForDataInterface): Promise<any>;
-  MWcombatmp(gamertag: string, platform: string, date: DateForDataInterface): Promise<any>;
+  IW: SubGameInterface;
+  WWII: SubGameInterface;
+  BO3: SubGameInterface;
+  BO4: SubGameInterface;
+  MW: MWGameInterface;
+  search(): Promise<any>;
+  battlepass: BattlePassInterface;
 }
