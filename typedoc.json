@@ -1,0 +1,14 @@
+{
+  "name": "Call of Duty API",
+  "includeVersion": true,
+  "inputFiles": ["./src"],
+  "mode": "modules",
+  "out": "docs",
+  "tsconfig": "./tsconfig.json",
+  "excludePrivate": true,
+  "toc": [
+    "CodAPI",
+    "CodAPIInterface"
+  ],
+  "disableSources": true
+}
