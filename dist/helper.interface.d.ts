@@ -11,7 +11,7 @@ declare class HelperInterface {
     sendRequest(url: string): Promise<AxiosResponse>;
     sendPostRequest(url: string, data: object): Promise<AxiosResponse>;
     postReq(url: string, data: object, headers: object | null): Promise<any>;
-    apiErrorHandling(response: AxiosResponse): string;
+    apiErrorHandling(response: AxiosResponse): object;
     [propName: string]: any;
 }
 export default HelperInterface;

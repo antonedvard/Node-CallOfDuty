@@ -1,27 +1,30 @@
 import Helper from "./helper";
-import CodAPIInterface, { CODAPICONFIG, DateForDataInterface, SubGameInterface, WarzoneInterface, MultiplayerInterface, ZombieInterface, BlackoutInterface, BattlePassInterface, LoggedInUserInterface, MWGameInterface, BO4Interface } from "./index.interface";
+import { CODAPI } from "./index.interface";
 
 import { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 
 import uniqid from "uniqid";
 import crypto from "crypto";
-import { lookup } from "dns";
 
-interface PlatformInterface {
-  battle: string,
-  steam: string,
-  psn: string,
-  xbl: string,
-  acti: string,
-  uno: string,
-  unoid: string,
-  all: string
-}
-
-
-
-class CodAPI extends Helper implements CodAPIInterface {
-  private readonly __platforms: PlatformInterface = {
+/**
+* Quick start example.
+* ```typescript
+* import CODAPI from "node-codapi";
+* const config = {
+*  platform: process.env.COD_PLATFORM,
+*  platformUser: process.env.COD_PLATFORM_USER,
+*  email: process.env.COD_LOGIN,
+*  password: process.env.COD_PASS,
+*  activisionId: process.env.ACTIVISION_ID,
+* }
+* const cod = new CODAPI(config);
+* cod.login().then(() => {
+*   // Play with the API methods. 
+* })
+* ```
+*/
+class CodAPI extends Helper implements CODAPI.CodAPIInterface {
+  private readonly __platforms: CODAPI.Platforms = {
     "battle": "battle",
     "steam": "steam",
     "psn": "psn",
@@ -32,8 +35,12 @@ class CodAPI extends Helper implements CodAPIInterface {
     "all": "all",
   }
 
-  constructor(config: CODAPICONFIG) {
+  constructor(config: CODAPI.CODAPICONFIG) {
     super(config);
+  }
+
+  get currentSeason(): number {
+    return (this.__currentSeason as number);
   }
 
   login(): Promise<any> {
@@ -64,14 +71,15 @@ class CodAPI extends Helper implements CodAPIInterface {
               this._ssoCOOKIE = data.s_ACT_SSO_COOKIE;
               (this.httpI as AxiosInstance).defaults.headers.common.Cookie = `${this._BASECOOKIE}rtkn=${data.rtkn};ACT_SSO_COOKIE=${data.s_ACT_SSO_COOKIE};atkn=${data.atkn};`;
               this._LOGGEDIN = true;
-              console.log(this._LOGGEDIN);
               resolve({
                 status: 200,
                 msg: "200 - OK. Log in successful."
               });
             })
             .catch((error: AxiosError | string) => {
-              if (typeof error === "string") reject(error);
+              if (typeof error === "string") {
+                reject(error)
+              };
               reject((error as AxiosError).message);
             });
         })
@@ -84,8 +92,8 @@ class CodAPI extends Helper implements CodAPIInterface {
 
   private getGameData(
     gamertag: string = this.platformUser,
-    platform: string = this.userPlatform,
-    game: string,
+    platform: CODAPI.OneOfPlatforms = this.userPlatform,
+    game: CODAPI.OneOfGames,
     url: string
   ): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -105,8 +113,8 @@ class CodAPI extends Helper implements CodAPIInterface {
   }
 
   private getFriends(gamertag: string = this.platformUser,
-    platform: string = this.userPlatform,
-    game: string,
+    platform: CODAPI.OneOfPlatforms = this.userPlatform,
+    game: CODAPI.OneOfGames,
     url: string): Promise<any> {
 
     if (platform === "battle") {
@@ -118,34 +126,29 @@ class CodAPI extends Helper implements CodAPIInterface {
     return this.getGameData(gamertag, platform, game, url);
   }
 
-  get IW(): SubGameInterface {
+  get IW(): CODAPI.IWInterface {
     // GAME: Call of Duty Infinite Warfare: COD IW: IW;
-    const game = "IW";
+    const game: CODAPI.OneOfGames = "IW";
     return {
       stats: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
-        const game = "IW";
         let url = this.buildUri(
           `crm/cod/v2/title/iw/platform/${platform}/gamer/${gamertag}/profile/`,
         );
         return this.getGameData(gamertag, platform, game, url);
-      },
-      leaderboard: async () => { },
-      friends: async () => { }
+      }
     }
   }
 
-  get WWII(): SubGameInterface {
+  get WWII(): CODAPI.WWIIInterface {
     // GAME: Call of Duty World War II: COD WWII;
-    const game = "WWII";
+    const game: CODAPI.OneOfGames = "WWII";
     return {
-      friends: async () => { },
-      leaderboard: async () => { },
       stats: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         let url = this.buildUri(
           `crm/cod/v2/title/wwii/platform/${platform}/gamer/${gamertag}/profile/`,
@@ -154,7 +157,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       achievements: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
         scheduled: boolean = false
       ): Promise<any> => {
         let url = this.buildUri(
@@ -171,21 +174,19 @@ class CodAPI extends Helper implements CodAPIInterface {
     }
   }
 
-  get BO3(): SubGameInterface {
+  get BO3(): CODAPI.BO3Interface {
     // GAME: Call of Duty Black Ops 3: COD BO3;
-    const game = "BO3";
-    const InterFace: SubGameInterface = {
+    const game: CODAPI.OneOfGames = "BO3";
+    const InterFace: CODAPI.BO3Interface = {
       stats: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         let url = this.buildUri(
           `crm/cod/v2/title/bo3/platform/${platform}/gamer/${gamertag}/profile/`,
         );
         return this.getGameData(gamertag, platform, game, url);
       },
-      friends: async () => { },
-      leaderboard: async () => { },
       zombie: {
         stats: async () => { },
         combat: async () => { }
@@ -193,11 +194,8 @@ class CodAPI extends Helper implements CodAPIInterface {
     }
 
     Object.defineProperty(InterFace, 'zombie', {
-      get: (): ZombieInterface => {
+      get: (): CODAPI.ZombieInterface => {
         return {
-          test: () => {
-            // console.log(this);
-          },
           stats: async () => { },
           combat: async () => { }
         }
@@ -207,22 +205,19 @@ class CodAPI extends Helper implements CodAPIInterface {
     return InterFace;
   }
 
-  get BO4(): BO4Interface {
+  get BO4(): CODAPI.BO4Interface {
     // GAME: Call of Duty Black Ops 4: COD BO4;
-    const game = "BO4";
-    const InterFace: BO4Interface = {
-      test: () => {
-        console.log(game)
-      },
+    const game: CODAPI.OneOfGames = "BO4";
+    const InterFace: CODAPI.BO4Interface = {
       stats: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         return this.BO4.multiplayer.stats(gamertag, platform);
       },
       friends: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         let url = this.buildUri(
           `leaderboards/v2/title/bo4/platform/${platform}/time/alltime/type/core/mode/career/gamer/${gamertag}/friends`,
@@ -231,7 +226,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       leaderboard: (
         page: number = 1,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         let url = this.buildUri(
           `leaderboards/v2/title/bo4/platform/${platform}/time/alltime/type/core/mode/career/page/${page}`,
@@ -246,18 +241,14 @@ class CodAPI extends Helper implements CodAPIInterface {
         stats: async () => { },
         combat: async () => { }
       }
-
     }
 
     Object.defineProperty(InterFace, 'multiplayer', {
-      get: (): MultiplayerInterface => {
+      get: (): CODAPI.MultiplayerInterface => {
         return {
-          test: () => {
-            // console.log(this);
-          },
           stats: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             if (platform === "battle") {
               gamertag = this.cleanClientName(gamertag);
@@ -270,8 +261,8 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           combat: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
-            date: DateForDataInterface = {
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
+            date: CODAPI.DateForDataInterface = {
               start: 0,
               end: 0
             }
@@ -289,14 +280,11 @@ class CodAPI extends Helper implements CodAPIInterface {
     });
 
     Object.defineProperty(InterFace, 'zombie', {
-      get: (): ZombieInterface => {
+      get: (): CODAPI.ZombieInterface => {
         return {
-          test: () => {
-            // console.log(this);
-          },
           stats: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             if (platform === "battle") {
               gamertag = this.cleanClientName(gamertag);
@@ -308,8 +296,8 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           combat: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
-            date: DateForDataInterface = {
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
+            date: CODAPI.DateForDataInterface = {
               start: 0,
               end: 0
             }
@@ -327,14 +315,11 @@ class CodAPI extends Helper implements CodAPIInterface {
     });
 
     Object.defineProperty(InterFace, 'blackout', {
-      get: (): BlackoutInterface => {
+      get: (): CODAPI.BlackoutInterface => {
         return {
-          test: () => {
-            // console.log(this);
-          },
           stats: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             if (platform === "battle") {
               gamertag = this.cleanClientName(gamertag);
@@ -346,8 +331,8 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           combat: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
-            date: DateForDataInterface = {
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
+            date: CODAPI.DateForDataInterface = {
               start: 0,
               end: 0
             }
@@ -367,23 +352,19 @@ class CodAPI extends Helper implements CodAPIInterface {
     return InterFace;
   }
 
-  get MW(): MWGameInterface {
+  get MW(): CODAPI.MWGameInterface {
     // GAME: Call of Duty Modern Warfare: COD MW;
-    const game = "MW";
-
-    const InterFace: MWGameInterface = {
-      test: () => {
-        console.log(game);
-      },
+    const game: CODAPI.OneOfGames = "MW";
+    const InterFace: CODAPI.MWGameInterface = {
       stats: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         return this.MW.multiplayer.stats(gamertag, platform);
       },
       friends: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         if (platform === "uno") {
           gamertag = this.cleanClientName(gamertag);
@@ -398,7 +379,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       leaderboard: (
         page: number = 1,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         let url = this.buildUri(
           `leaderboards/v2/title/mw/platform/${platform}/time/alltime/type/core/mode/career/page/${page}`,
@@ -407,7 +388,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       loot: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         gamertag = this.cleanClientName(gamertag);
         let lookupType = "gamer";
@@ -422,7 +403,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       weekly: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         return new Promise((resolve, reject) => {
           const weeklyStats: any = {};
@@ -444,7 +425,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       battle: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         return new Promise((resolve, reject) => {
           let brDetails: any = {};
@@ -472,13 +453,12 @@ class CodAPI extends Helper implements CodAPIInterface {
                 }
               }
               resolve(brDetails);
-            })
-            .catch(e => reject(e));
+            }).catch(e => reject(e));
         });
       },
       analysis: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         gamertag = this.cleanClientName(gamertag);
         if (platform === "uno" || platform === "acti") {
@@ -499,13 +479,12 @@ class CodAPI extends Helper implements CodAPIInterface {
         friends: async () => { },
       }
     };
-
     Object.defineProperty(InterFace, 'multiplayer', {
-      get: (): MultiplayerInterface => {
+      get: (): CODAPI.MultiplayerInterface => {
         return {
           stats: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             gamertag = this.cleanClientName(gamertag);
             let lookupType = "gamer";
@@ -520,8 +499,8 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           combat: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
-            date: DateForDataInterface = {
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
+            date: CODAPI.DateForDataInterface = {
               start: 0,
               end: 0
             }
@@ -537,7 +516,7 @@ class CodAPI extends Helper implements CodAPIInterface {
             )
             return this.getGameData(gamertag, platform, game, url)
           },
-          maps: (platform: string = this.userPlatform,): Promise<any> => {
+          maps: (platform: CODAPI.OneOfPlatforms = this.userPlatform,): Promise<any> => {
             if (platform === "uno" || platform === "acti") {
               platform = this.__platforms["uno"];
             }
@@ -551,14 +530,11 @@ class CodAPI extends Helper implements CodAPIInterface {
     })
 
     Object.defineProperty(InterFace, 'warzone', {
-      get: (): WarzoneInterface => {
+      get: (): CODAPI.WarzoneInterface => {
         return {
-          test: () => {
-            // console.log(this);
-          },
           stats: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             gamertag = this.cleanClientName(gamertag);
             let lookupType = "gamer";
@@ -573,8 +549,8 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           combat: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
-            date: DateForDataInterface = {
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
+            date: CODAPI.DateForDataInterface = {
               start: 0,
               end: 0
             }
@@ -592,7 +568,7 @@ class CodAPI extends Helper implements CodAPIInterface {
           },
           friends: (
             gamertag: string = this.platformUser,
-            platform: string = this.userPlatform,
+            platform: CODAPI.OneOfPlatforms = this.userPlatform,
           ): Promise<any> => {
             if (platform === "uno") {
               gamertag = this.cleanClientName(gamertag);
@@ -614,11 +590,11 @@ class CodAPI extends Helper implements CodAPIInterface {
     return InterFace;
   }
 
-  get battlepass(): BattlePassInterface {
+  get battlepass(): CODAPI.BattlePassInterface {
     return {
       loot: (
-        season: number = this.currentSeason,
-        platform: string = this.userPlatform,
+        season: number = (this.currentSeason as number),
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         if (platform === "uno" || platform === "acti") {
           platform = this.__platforms["uno"]
@@ -630,7 +606,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       info: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         if (
           platform === "battle" ||
@@ -652,7 +628,7 @@ class CodAPI extends Helper implements CodAPIInterface {
     }
   }
 
-  get me(): LoggedInUserInterface {
+  get me(): CODAPI.LoggedInUserInterface {
     return {
       info: (): Promise<any> => {
         let url = this.buildProfileUri(
@@ -660,21 +636,22 @@ class CodAPI extends Helper implements CodAPIInterface {
         );
         return this.sendRequestUserInfoOnly(url);
       },
+      // HAS TO HAVE SOME WORK DONE ON IT!
       presence: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         gamertag = this.cleanClientName(gamertag);
         let url = this.buildUri(
-          `crm/cod/v2/friends/platform/${platform}/gamer/${gamertag}/presence/1/${this._ssoCookie}`,
+          `crm/cod/v2/friends/platform/${platform}/gamer/${gamertag}/presence/1/${this._ssoCOOKIE}`,
         );
-        return this.getGameData(gamertag, platform, "", url);
+        return this.getGameData(gamertag, platform, "MW", url);
       },
       loggedInIds: (): Promise<any> => {
         let url = this.buildUri(
-          `crm/cod/v2/identities/${this._ssoCookie}`,
+          `crm/cod/v2/identities/${this._ssoCOOKIE}`,
         );
-        return this.getGameData(this.platformUser, this.userPlatform, "", url);
+        return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
       },
       giftableFriends: (
         unoId: string,
@@ -683,15 +660,15 @@ class CodAPI extends Helper implements CodAPIInterface {
         let url = this.buildUri(
           `gifting/v1/title/mw/platform/uno/${unoId}/sku/${itemSku}/giftableFriends`,
         );
-        return this.getGameData(this.platformUser, this.userPlatform, "", url);
+        return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
       },
       purchaseItem: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
         item = "battle_pass_upgrade_bundle_4",
       ): Promise<any> => {
         if (platform === "uno" || platform === "acti") {
-          platform = this.platforms["uno"];
+          platform = this.__platforms["uno"];
         }
         gamertag = this.cleanClientName(gamertag);
         let url = this.buildUri(
@@ -705,7 +682,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       },
       connectedAccounts: (): Promise<any> => {
         let gamertag = this.cleanClientName(this.platformUser);
-        let platform = this.userPlatform;
+        let platform: CODAPI.OneOfPlatforms = this.userPlatform;
         let lookupType = "gamer";
         if (platform === "uno") { lookupType = "id"; }
         if (platform === "uno" || platform === "acti") {
@@ -714,19 +691,19 @@ class CodAPI extends Helper implements CodAPIInterface {
         let url = this.buildUri(
           `crm/cod/v2/accounts/platform/${platform}/${lookupType}/${gamertag}`,
         );
-        return this.getGameData(gamertag, platform, "", url)
+        return this.getGameData(gamertag, platform, "MW", url)
       },
       getCodPoints: (): Promise<any> => {
         let gamertag = this.platformUser;
-        let platform = this.userPlatform;
+        let platform: CODAPI.OneOfPlatforms = this.userPlatform;
         if (platform === "uno" || platform === "acti") {
-          platform = this.platforms["uno"];
+          platform = this.__platforms["uno"];
         }
         gamertag = this.cleanClientName(gamertag);
         let url = this.buildUri(
           `inventory/v1/title/mw/platform/${platform}/gamer/${gamertag}/currency`,
         );
-        return this.getGameData(gamertag, platform, "", url)
+        return this.getGameData(gamertag, platform, "MW", url)
       }
     }
   }
@@ -737,27 +714,31 @@ class CodAPI extends Helper implements CodAPIInterface {
         let url = this.buildUri(
           `userfeed/v1/friendFeed/rendered/en/${this._ssoCOOKIE}`,
         );
-        return this.getGameData(this.platformUser, this.userPlatform, "", url);
+        return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
       },
       friends: (
         gamertag: string = this.platformUser,
-        platform: string = this.userPlatform,
+        platform: CODAPI.OneOfPlatforms = this.userPlatform,
       ): Promise<any> => {
         gamertag = this.cleanClientName(gamertag);
         if (platform === "uno" || platform === "acti") {
-          platform = this.platforms["uno"];
+          platform = this.__platforms["uno"];
         }
         let url = this.buildUri(
           `userfeed/v1/friendFeed/platform/${platform}/gamer/${gamertag}/friendFeedEvents/en`,
         );
-        return this.getGameData(gamertag, platform, "", url);
+        return this.getGameData(gamertag, platform, "MW", url);
       },
     }
   }
 
+  /**
+  * 
+  * 
+  */
   search(
     gamertag: string = this.platformUser,
-    platform: string = this.userPlatform,
+    platform: CODAPI.OneOfPlatforms = this.userPlatform,
   ): Promise<any> {
     if (
       platform === "battle" ||
@@ -770,7 +751,7 @@ class CodAPI extends Helper implements CodAPIInterface {
       platform = this.__platforms["uno"];
     }
     let url = this.buildUri(`crm/cod/v2/platform/${platform}/username/${gamertag}/search`);
-    return this.getGameData(gamertag, platform, "", url);
+    return this.getGameData(gamertag, platform, "MW", url);
   }
 
   // sendGift(
@@ -800,13 +781,13 @@ class CodAPI extends Helper implements CodAPIInterface {
   // };
 
   getPurchasable(
-    platform: string = this.userPlatform,
+    platform: CODAPI.OneOfPlatforms = this.userPlatform,
   ): Promise<any> {
     if (platform === "uno" || platform === "acti") {
       platform = this.__platforms["uno"];
     }
     let url = this.buildUri(`inventory/v1/title/mw/platform/${platform}/purchasable`);
-    return this.getGameData(this.platformUser, this.userPlatform, "", url)
+    return this.getGameData(this.platformUser, this.userPlatform, "MW", url)
   };
 
 }

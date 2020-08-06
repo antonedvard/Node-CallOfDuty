@@ -14,6 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const helper_1 = __importDefault(require("./helper"));
 const uniqid_1 = __importDefault(require("uniqid"));
 const crypto_1 = __importDefault(require("crypto"));
+/**
+* Quick start example.
+* ```typescript
+* import CODAPI from "node-codapi";
+* const config = {
+*  platform: process.env.COD_PLATFORM,
+*  platformUser: process.env.COD_PLATFORM_USER,
+*  email: process.env.COD_LOGIN,
+*  password: process.env.COD_PASS,
+*  activisionId: process.env.ACTIVISION_ID,
+* }
+* const cod = new CODAPI(config);
+* cod.login().then(() => {
+*   // Play with the API methods.
+* })
+* ```
+*/
 class CodAPI extends helper_1.default {
     constructor(config) {
         super(config);
@@ -27,6 +44,10 @@ class CodAPI extends helper_1.default {
             "unoid": "uno",
             "all": "all",
         };
+        this.login().then(() => { super.getCurrentSeason(); });
+    }
+    get currentSeason() {
+        return this.__currentSeason;
     }
     login() {
         return new Promise((resolve, reject) => {
@@ -55,15 +76,16 @@ class CodAPI extends helper_1.default {
                     this._ssoCOOKIE = data.s_ACT_SSO_COOKIE;
                     this.httpI.defaults.headers.common.Cookie = `${this._BASECOOKIE}rtkn=${data.rtkn};ACT_SSO_COOKIE=${data.s_ACT_SSO_COOKIE};atkn=${data.atkn};`;
                     this._LOGGEDIN = true;
-                    console.log(this._LOGGEDIN);
                     resolve({
                         status: 200,
                         msg: "200 - OK. Log in successful."
                     });
                 })
                     .catch((error) => {
-                    if (typeof error === "string")
+                    if (typeof error === "string") {
                         reject(error);
+                    }
+                    ;
                     reject(error.message);
                 });
             })
@@ -98,20 +120,15 @@ class CodAPI extends helper_1.default {
         const game = "IW";
         return {
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
-                const game = "IW";
                 let url = this.buildUri(`crm/cod/v2/title/iw/platform/${platform}/gamer/${gamertag}/profile/`);
                 return this.getGameData(gamertag, platform, game, url);
-            },
-            leaderboard: () => __awaiter(this, void 0, void 0, function* () { }),
-            friends: () => __awaiter(this, void 0, void 0, function* () { })
+            }
         };
     }
     get WWII() {
         // GAME: Call of Duty World War II: COD WWII;
         const game = "WWII";
         return {
-            friends: () => __awaiter(this, void 0, void 0, function* () { }),
-            leaderboard: () => __awaiter(this, void 0, void 0, function* () { }),
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 let url = this.buildUri(`crm/cod/v2/title/wwii/platform/${platform}/gamer/${gamertag}/profile/`);
                 return this.getGameData(gamertag, platform, game, url);
@@ -134,8 +151,6 @@ class CodAPI extends helper_1.default {
                 let url = this.buildUri(`crm/cod/v2/title/bo3/platform/${platform}/gamer/${gamertag}/profile/`);
                 return this.getGameData(gamertag, platform, game, url);
             },
-            friends: () => __awaiter(this, void 0, void 0, function* () { }),
-            leaderboard: () => __awaiter(this, void 0, void 0, function* () { }),
             zombie: {
                 stats: () => __awaiter(this, void 0, void 0, function* () { }),
                 combat: () => __awaiter(this, void 0, void 0, function* () { })
@@ -144,9 +159,6 @@ class CodAPI extends helper_1.default {
         Object.defineProperty(InterFace, 'zombie', {
             get: () => {
                 return {
-                    test: () => {
-                        // console.log(this);
-                    },
                     stats: () => __awaiter(this, void 0, void 0, function* () { }),
                     combat: () => __awaiter(this, void 0, void 0, function* () { })
                 };
@@ -158,9 +170,6 @@ class CodAPI extends helper_1.default {
         // GAME: Call of Duty Black Ops 4: COD BO4;
         const game = "BO4";
         const InterFace = {
-            test: () => {
-                console.log(game);
-            },
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 return this.BO4.multiplayer.stats(gamertag, platform);
             },
@@ -184,9 +193,6 @@ class CodAPI extends helper_1.default {
         Object.defineProperty(InterFace, 'multiplayer', {
             get: () => {
                 return {
-                    test: () => {
-                        // console.log(this);
-                    },
                     stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                         if (platform === "battle") {
                             gamertag = this.cleanClientName(gamertag);
@@ -210,9 +216,6 @@ class CodAPI extends helper_1.default {
         Object.defineProperty(InterFace, 'zombie', {
             get: () => {
                 return {
-                    test: () => {
-                        // console.log(this);
-                    },
                     stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                         if (platform === "battle") {
                             gamertag = this.cleanClientName(gamertag);
@@ -236,9 +239,6 @@ class CodAPI extends helper_1.default {
         Object.defineProperty(InterFace, 'blackout', {
             get: () => {
                 return {
-                    test: () => {
-                        // console.log(this);
-                    },
                     stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                         if (platform === "battle") {
                             gamertag = this.cleanClientName(gamertag);
@@ -265,9 +265,6 @@ class CodAPI extends helper_1.default {
         // GAME: Call of Duty Modern Warfare: COD MW;
         const game = "MW";
         const InterFace = {
-            test: () => {
-                console.log(game);
-            },
             stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 return this.MW.multiplayer.stats(gamertag, platform);
             },
@@ -347,8 +344,7 @@ class CodAPI extends helper_1.default {
                             }
                         }
                         resolve(brDetails);
-                    })
-                        .catch(e => reject(e));
+                    }).catch(e => reject(e));
                 });
             },
             analysis: (gamertag = this.platformUser, platform = this.userPlatform) => {
@@ -412,9 +408,6 @@ class CodAPI extends helper_1.default {
         Object.defineProperty(InterFace, 'warzone', {
             get: () => {
                 return {
-                    test: () => {
-                        // console.log(this);
-                    },
                     stats: (gamertag = this.platformUser, platform = this.userPlatform) => {
                         gamertag = this.cleanClientName(gamertag);
                         let lookupType = "gamer";
@@ -495,22 +488,23 @@ class CodAPI extends helper_1.default {
                 let url = this.buildProfileUri(`cod/userInfo/${this._ssoCOOKIE}`);
                 return this.sendRequestUserInfoOnly(url);
             },
+            // HAS TO HAVE SOME WORK DONE ON IT!
             presence: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 gamertag = this.cleanClientName(gamertag);
-                let url = this.buildUri(`crm/cod/v2/friends/platform/${platform}/gamer/${gamertag}/presence/1/${this._ssoCookie}`);
-                return this.getGameData(gamertag, platform, "", url);
+                let url = this.buildUri(`crm/cod/v2/friends/platform/${platform}/gamer/${gamertag}/presence/1/${this._ssoCOOKIE}`);
+                return this.getGameData(gamertag, platform, "MW", url);
             },
             loggedInIds: () => {
-                let url = this.buildUri(`crm/cod/v2/identities/${this._ssoCookie}`);
-                return this.getGameData(this.platformUser, this.userPlatform, "", url);
+                let url = this.buildUri(`crm/cod/v2/identities/${this._ssoCOOKIE}`);
+                return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
             },
             giftableFriends: (unoId, itemSku = 432000) => {
                 let url = this.buildUri(`gifting/v1/title/mw/platform/uno/${unoId}/sku/${itemSku}/giftableFriends`);
-                return this.getGameData(this.platformUser, this.userPlatform, "", url);
+                return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
             },
             purchaseItem: (gamertag = this.platformUser, platform = this.userPlatform, item = "battle_pass_upgrade_bundle_4") => {
                 if (platform === "uno" || platform === "acti") {
-                    platform = this.platforms["uno"];
+                    platform = this.__platforms["uno"];
                 }
                 gamertag = this.cleanClientName(gamertag);
                 let url = this.buildUri(`inventory/v1/title/mw/platform/${platform}/gamer/${gamertag}/item/${item}/purchaseWith/CODPoints`);
@@ -531,17 +525,17 @@ class CodAPI extends helper_1.default {
                     platform = this.__platforms["uno"];
                 }
                 let url = this.buildUri(`crm/cod/v2/accounts/platform/${platform}/${lookupType}/${gamertag}`);
-                return this.getGameData(gamertag, platform, "", url);
+                return this.getGameData(gamertag, platform, "MW", url);
             },
             getCodPoints: () => {
                 let gamertag = this.platformUser;
                 let platform = this.userPlatform;
                 if (platform === "uno" || platform === "acti") {
-                    platform = this.platforms["uno"];
+                    platform = this.__platforms["uno"];
                 }
                 gamertag = this.cleanClientName(gamertag);
                 let url = this.buildUri(`inventory/v1/title/mw/platform/${platform}/gamer/${gamertag}/currency`);
-                return this.getGameData(gamertag, platform, "", url);
+                return this.getGameData(gamertag, platform, "MW", url);
             }
         };
     }
@@ -549,18 +543,22 @@ class CodAPI extends helper_1.default {
         return {
             event: () => {
                 let url = this.buildUri(`userfeed/v1/friendFeed/rendered/en/${this._ssoCOOKIE}`);
-                return this.getGameData(this.platformUser, this.userPlatform, "", url);
+                return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
             },
             friends: (gamertag = this.platformUser, platform = this.userPlatform) => {
                 gamertag = this.cleanClientName(gamertag);
                 if (platform === "uno" || platform === "acti") {
-                    platform = this.platforms["uno"];
+                    platform = this.__platforms["uno"];
                 }
                 let url = this.buildUri(`userfeed/v1/friendFeed/platform/${platform}/gamer/${gamertag}/friendFeedEvents/en`);
-                return this.getGameData(gamertag, platform, "", url);
+                return this.getGameData(gamertag, platform, "MW", url);
             },
         };
     }
+    /**
+    *
+    *
+    */
     search(gamertag = this.platformUser, platform = this.userPlatform) {
         if (platform === "battle" ||
             platform == "uno" ||
@@ -571,7 +569,7 @@ class CodAPI extends helper_1.default {
             platform = this.__platforms["uno"];
         }
         let url = this.buildUri(`crm/cod/v2/platform/${platform}/username/${gamertag}/search`);
-        return this.getGameData(gamertag, platform, "", url);
+        return this.getGameData(gamertag, platform, "MW", url);
     }
     // sendGift(
     //   gamertag: string,
@@ -603,7 +601,7 @@ class CodAPI extends helper_1.default {
             platform = this.__platforms["uno"];
         }
         let url = this.buildUri(`inventory/v1/title/mw/platform/${platform}/purchasable`);
-        return this.getGameData(this.platformUser, this.userPlatform, "", url);
+        return this.getGameData(this.platformUser, this.userPlatform, "MW", url);
     }
     ;
 }

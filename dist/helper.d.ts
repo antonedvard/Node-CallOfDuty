@@ -1,8 +1,6 @@
 import { AxiosResponse, AxiosInstance } from "axios";
-import HelperInterface from "./helper.interface";
-import { CODAPICONFIG } from "./index.interface";
-export default class Helper implements HelperInterface {
-    [propName: string]: any;
+import { CODAPI } from "./index.interface";
+export default class Helper {
     protected _BASEURL: string;
     protected _LOGINURL: string;
     protected _PROFILEURL: string;
@@ -13,20 +11,22 @@ export default class Helper implements HelperInterface {
     _ssoCOOKIE: string;
     protected userEmail: string;
     protected userPassword: string;
-    protected userPlatform: string;
+    protected userPlatform: CODAPI.OneOfPlatforms;
     protected platformUser: string;
     protected activisionId: string;
     protected httpI: AxiosInstance | null;
     protected loginHttp: AxiosInstance | null;
-    constructor(config: CODAPICONFIG);
+    protected __currentSeason: number;
+    constructor(config: CODAPI.CODAPICONFIG);
     get loggedIn(): boolean;
     get debug(): boolean;
-    buildUri(str: string): string;
-    buildProfileUri(str: string): string;
-    cleanClientName(gamertag: string): string;
-    sendRequestUserInfoOnly(url: string): Promise<AxiosResponse>;
-    sendRequest(url: string): Promise<AxiosResponse>;
-    sendPostRequest(url: string, data: object): Promise<AxiosResponse>;
-    postReq(url: string, data: object, headers: object | null): Promise<any>;
-    apiErrorHandling(response: AxiosResponse | any): string;
+    protected getCurrentSeason(): void;
+    protected buildUri(str: string): string;
+    protected buildProfileUri(str: string): string;
+    protected cleanClientName(gamertag: string): string;
+    protected sendRequestUserInfoOnly(url: string): Promise<any>;
+    protected sendRequest(url: string): Promise<any>;
+    protected sendPostRequest(url: string, data: object): Promise<AxiosResponse>;
+    protected postReq(url: string, data: object, headers: object | null): Promise<any>;
+    protected apiErrorHandling(response: AxiosResponse | any): object;
 }

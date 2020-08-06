@@ -11,10 +11,14 @@ async function start() {
   });
 
   let res = await epic.login();
-  // const wzData = await epic.MWwzstats(
-  //   process.env.gamertag,
-  //   process.env.gamertag_platform,
+  // const wzData = await epic.MW.warzone.combat(
+  //   process.env.gtv_four,
+  //   process.env.gtv_four_platform,
   // );
+
+  // console.log(wzData.matches[0]);
+
+  console.log(epic.currentSeason);
 
   // epic.IW.test();
   // epic.WWII.test();
@@ -22,7 +26,7 @@ async function start() {
   // epic.BO4.test();
   // epic.MW.warzone.test();
 
-  console.log(await epic.me.info());
+  // console.log(await epic.me.info());
 
   // const mpData = await epic.MWcombatmp();
   // console.log(mpData);

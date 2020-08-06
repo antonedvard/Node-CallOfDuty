@@ -15,13 +15,7 @@ class Helper {
         this._USERAGENT = "a4b471be-4ad2-47e2-ba0e-e1f2aa04bff9";
         this._BASECOOKIE = "new_SiteId=cod; ACT_SSO_LOCALE=en_US;country=US;XSRF-TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;API_CSRF_TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;";
         this._ssoCOOKIE = "";
-        this.userEmail = "";
-        this.userPassword = "";
-        this.userPlatform = "";
-        this.platformUser = "";
-        this.activisionId = "";
-        this.httpI = null;
-        this.loginHttp = null;
+        this.__currentSeason = 5;
         this.userEmail = config.email;
         this.userPassword = config.password;
         this.userPlatform = config.platform === undefined ? "psn" : config.platform;
@@ -62,6 +56,7 @@ class Helper {
             console.log("Could not parse ratelimit object. ignoring.");
         }
     }
+    ;
     get loggedIn() {
         return this._LOGGEDIN;
     }
@@ -72,6 +67,22 @@ class Helper {
         else {
             return this._DEBUG;
         }
+    }
+    getCurrentSeason() {
+        let url = this.buildUri(`inventory/v1/title/mw/platform/uno/purchasable`);
+        this.sendRequest(url).then(({ lootStream }) => {
+            let lootSeason = Object.keys(lootStream).find((p) => {
+                return p.startsWith("loot_season_");
+            });
+            let season = parseInt(lootSeason.split("loot_season_").filter(Boolean)[0]);
+            if (lootSeason.length > 0) {
+                this.__currentSeason = season;
+                return season;
+            }
+            else {
+                return 0;
+            }
+        });
     }
     buildUri(str) {
         return `${this._BASEURL}${str}`;
@@ -89,8 +100,11 @@ class Helper {
             this.httpI.get(url)
                 .then((response) => {
                 if (response.status == 403)
-                    reject("Forbidden. You may be IP banned.");
-                if (this.DEBUG === true) {
+                    reject({
+                        status: 403,
+                        msg: "Forbidden. You may be IP banned."
+                    });
+                if (this._DEBUG === true) {
                     console.log(`[DEBUG]`, `Build URI: ${url}`);
                     console.log(`[DEBUG]`, `Round trip took: ${response.headers["request-duration"]}ms.`);
                     console.log(`[DEBUG]`, `Response Size: ${JSON.stringify(response.data).length} bytes.`);
@@ -104,7 +118,7 @@ class Helper {
     }
     sendRequest(url) {
         return new Promise((resolve, reject) => {
-            if (!this.loggedIn)
+            if (!this._LOGGEDIN)
                 reject("Not Logged In.");
             this.httpI.get(url).then((response) => {
                 if (this.debug === true) {
@@ -127,7 +141,7 @@ class Helper {
     }
     sendPostRequest(url, data) {
         return new Promise((resolve, reject) => {
-            if (!this.loggedIn)
+            if (!this._LOGGEDIN)
                 reject("Not Logged In.");
             this.httpI.post(url, JSON.stringify(data))
                 .then((response) => {
@@ -170,28 +184,64 @@ class Helper {
                     ? response.data.data.message
                     : response.message !== undefined
                         ? response.message
-                        : "No error returned from API.";
+                        : {
+                            status: 200,
+                            ok: true,
+                            msg: "No error returned from API."
+                        };
                 switch (apiErrorMessage) {
                     case "Not permitted: user not found":
-                        return "404 - Not found. Incorrect username or platform? Misconfigured privacy settings?";
+                        return {
+                            status: 404,
+                            ok: false,
+                            msg: "Not found. Incorrect username or platform? Misconfigured privacy settings?"
+                        };
                     case "Not permitted: rate limit exceeded":
-                        return "429 - Too many requests. Try again in a few minutes.";
+                        return {
+                            status: 429,
+                            ok: false,
+                            msg: "Too many requests. Try again in a few minutes."
+                        };
                     case "Error from datastore":
-                        return "500 - Internal server error. Request failed, try again.";
+                        return {
+                            status: 500,
+                            ok: false,
+                            msg: "Internal server error. Request failed, try again."
+                        };
                     default:
                         return apiErrorMessage;
                 }
                 break;
             case 401:
-                return "401 - Unauthorized. Incorrect username or password.";
+                return {
+                    status: 401,
+                    ok: false,
+                    msg: "401 - Unauthorized. Incorrect username or password."
+                };
             case 403:
-                return "403 - Forbidden. You may have been IP banned. Try again in a few minutes.";
+                return {
+                    status: 403,
+                    ok: false,
+                    msg: "Forbidden. You may have been IP banned. Try again in a few minutes."
+                };
             case 500:
-                return "500 - Internal server error. Request failed, try again.";
+                return {
+                    status: 500,
+                    ok: false,
+                    msg: "Internal server error. Request failed, try again."
+                };
             case 502:
-                return "502 - Bad gateway. Request failed, try again.";
+                return {
+                    status: 502,
+                    ok: false,
+                    msg: "Bad gateway. Request failed, try again."
+                };
             default:
-                return `We Could not get a valid reason for a failure. Status: ${response.status}`;
+                return {
+                    status: 999,
+                    ok: false,
+                    msg: `We Could not get a valid reason for a failure. Status: ${response.status}`
+                };
         }
     }
 }

@@ -1,13 +1,12 @@
 import { AxiosResponse, AxiosInstance, AxiosError } from "axios";
-import HelperInterface from "./helper.interface";
-import { CODAPICONFIG } from "./index.interface";
+// import HelperInterface from "./helper.interface";
+import { CODAPI } from "./index.interface";
 
 import axios from "axios";
 import rateLimit from "axios-rate-limit";
 
 
-export default class Helper implements HelperInterface {
-  [propName: string]: any;
+export default class Helper {
   protected _BASEURL: string =
     "https://my.callofduty.com/api/papi-client/";
   protected _LOGINURL: string =
@@ -19,16 +18,21 @@ export default class Helper implements HelperInterface {
   protected readonly _BASECOOKIE: string = "new_SiteId=cod; ACT_SSO_LOCALE=en_US;country=US;XSRF-TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;API_CSRF_TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;";
   _ssoCOOKIE: string = "";
 
-  protected userEmail: string = "";
-  protected userPassword: string = "";
-  protected userPlatform: string = "";
-  protected platformUser: string = "";
-  protected activisionId: string = "";
+  protected userEmail: string;
+  protected userPassword: string;
+  protected userPlatform: CODAPI.OneOfPlatforms;
+  protected platformUser: string;
+  protected activisionId: string;
 
-  protected httpI: AxiosInstance | null = null;
-  protected loginHttp: AxiosInstance | null = null;
+  protected httpI: AxiosInstance | null;
+  protected loginHttp: AxiosInstance | null;;
+  /**
+   * Currently hardcoded, a dynamic function to fetch the 
+   * current season would be much more optimal.
+   */
+  protected __currentSeason: number = 5;
 
-  constructor(config: CODAPICONFIG) {
+  constructor(config: CODAPI.CODAPICONFIG) {
     this.userEmail = config.email;
     this.userPassword = config.password
     this.userPlatform = config.platform === undefined ? "psn" : config.platform;
@@ -93,19 +97,37 @@ export default class Helper implements HelperInterface {
     }
   }
 
-  buildUri(str: string): string {
+  protected getCurrentSeason() {
+    let url = this.buildUri(`inventory/v1/title/mw/platform/uno/purchasable`);
+    this.sendRequest(url).then(({ lootStream }) => {
+      let lootSeason: string = (Object.keys(lootStream).find((p) => {
+        return p.startsWith("loot_season_");
+      }) as string);
+
+      let season = parseInt(lootSeason.split("loot_season_").filter(Boolean)[0]);
+
+      if (lootSeason.length > 0) {
+        this.__currentSeason = season
+        return season;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  protected buildUri(str: string): string {
     return `${this._BASEURL}${str}`;
   }
 
-  buildProfileUri(str: string): string {
+  protected buildProfileUri(str: string): string {
     return `${this._PROFILEURL}${str}`;
   }
 
-  cleanClientName(gamertag: string): string {
+  protected cleanClientName(gamertag: string): string {
     return encodeURIComponent(gamertag);
   }
 
-  sendRequestUserInfoOnly(url: string): Promise<AxiosResponse> {
+  protected sendRequestUserInfoOnly(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       if (!this._LOGGEDIN) reject("Not Logged In.");
       (this.httpI as AxiosInstance).get(url)
@@ -115,7 +137,7 @@ export default class Helper implements HelperInterface {
               status: 403,
               msg: "Forbidden. You may be IP banned."
             });
-          if (this.DEBUG === true) {
+          if (this._DEBUG === true) {
             console.log(`[DEBUG]`, `Build URI: ${url}`);
             console.log(
               `[DEBUG]`,
@@ -140,7 +162,7 @@ export default class Helper implements HelperInterface {
     });
   }
 
-  sendRequest(url: string): Promise<AxiosResponse> {
+  protected sendRequest(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       if (!this._LOGGEDIN) reject("Not Logged In.");
       (this.httpI as AxiosInstance).get(url).then((response: AxiosResponse) => {
@@ -173,7 +195,7 @@ export default class Helper implements HelperInterface {
     });
   }
 
-  sendPostRequest(url: string, data: object): Promise<AxiosResponse> {
+  protected sendPostRequest(url: string, data: object): Promise<AxiosResponse> {
     return new Promise((resolve, reject) => {
       if (!this._LOGGEDIN) reject("Not Logged In.");
       (this.httpI as AxiosInstance).post(url, JSON.stringify(data))
@@ -207,7 +229,7 @@ export default class Helper implements HelperInterface {
     });
   }
 
-  postReq(url: string, data: object, headers: object | null): Promise<any> {
+  protected postReq(url: string, data: object, headers: object | null): Promise<any> {
     return new Promise((resolve, reject) => {
       (this.loginHttp as AxiosInstance)
         .post(url, data, (headers as object))
@@ -220,7 +242,7 @@ export default class Helper implements HelperInterface {
     });
   }
 
-  apiErrorHandling(response: AxiosResponse | any): object {
+  protected apiErrorHandling(response: AxiosResponse | any): object {
     switch (response.status) {
       case 200:
         const apiErrorMessage =
