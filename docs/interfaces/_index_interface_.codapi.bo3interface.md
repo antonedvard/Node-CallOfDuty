@@ -1,5 +1,3 @@
-[Call of Duty API - v1.3.0](../globals.md) › ["index.interface"](../modules/_index_interface_.md) › [CODAPI](../modules/_index_interface_.codapi.md) › [BO3Interface](_index_interface_.codapi.bo3interface.md)
-
 # Interface: BO3Interface
 
 ## Hierarchy
@@ -7,26 +5,6 @@
 * [SubGameInterface](_index_interface_.codapi.subgameinterface.md)
 
   ↳ **BO3Interface**
-
-## Index
-
-### Properties
-
-* [multiplayer](_index_interface_.codapi.bo3interface.md#optional-multiplayer)
-* [warzone](_index_interface_.codapi.bo3interface.md#optional-warzone)
-* [zombie](_index_interface_.codapi.bo3interface.md#optional-zombie)
-
-### Methods
-
-* [achievements](_index_interface_.codapi.bo3interface.md#optional-achievements)
-* [analysis](_index_interface_.codapi.bo3interface.md#optional-analysis)
-* [battle](_index_interface_.codapi.bo3interface.md#optional-battle)
-* [community](_index_interface_.codapi.bo3interface.md#optional-community)
-* [friends](_index_interface_.codapi.bo3interface.md#optional-friends)
-* [leaderboard](_index_interface_.codapi.bo3interface.md#optional-leaderboard)
-* [loot](_index_interface_.codapi.bo3interface.md#optional-loot)
-* [stats](_index_interface_.codapi.bo3interface.md#stats)
-* [weekly](_index_interface_.codapi.bo3interface.md#optional-weekly)
 
 ## Properties
 

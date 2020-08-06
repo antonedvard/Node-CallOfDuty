@@ -1,5 +1,3 @@
-[Call of Duty API - v1.3.0](../globals.md) › ["index.interface"](../modules/_index_interface_.md) › [CODAPI](../modules/_index_interface_.codapi.md) › [MWGameInterface](_index_interface_.codapi.mwgameinterface.md)
-
 # Interface: MWGameInterface
 
 ## Hierarchy
@@ -7,26 +5,6 @@
 * [SubGameInterface](_index_interface_.codapi.subgameinterface.md)
 
   ↳ **MWGameInterface**
-
-## Index
-
-### Properties
-
-* [multiplayer](_index_interface_.codapi.mwgameinterface.md#readonly-multiplayer)
-* [warzone](_index_interface_.codapi.mwgameinterface.md#readonly-warzone)
-* [zombie](_index_interface_.codapi.mwgameinterface.md#optional-zombie)
-
-### Methods
-
-* [achievements](_index_interface_.codapi.mwgameinterface.md#optional-achievements)
-* [analysis](_index_interface_.codapi.mwgameinterface.md#analysis)
-* [battle](_index_interface_.codapi.mwgameinterface.md#battle)
-* [community](_index_interface_.codapi.mwgameinterface.md#optional-community)
-* [friends](_index_interface_.codapi.mwgameinterface.md#friends)
-* [leaderboard](_index_interface_.codapi.mwgameinterface.md#leaderboard)
-* [loot](_index_interface_.codapi.mwgameinterface.md#loot)
-* [stats](_index_interface_.codapi.mwgameinterface.md#stats)
-* [weekly](_index_interface_.codapi.mwgameinterface.md#weekly)
 
 ## Properties
 

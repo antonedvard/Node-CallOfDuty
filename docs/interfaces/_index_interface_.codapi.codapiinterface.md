@@ -1,5 +1,3 @@
-[Call of Duty API - v1.3.0](../globals.md) › ["index.interface"](../modules/_index_interface_.md) › [CODAPI](../modules/_index_interface_.codapi.md) › [CodAPIInterface](_index_interface_.codapi.codapiinterface.md)
-
 # Interface: CodAPIInterface
 
 ## Hierarchy
@@ -9,24 +7,6 @@
 ## Implemented by
 
 * [CodAPI](../classes/_index_.codapi.md)
-
-## Index
-
-### Properties
-
-* [BO3](_index_interface_.codapi.codapiinterface.md#bo3)
-* [BO4](_index_interface_.codapi.codapiinterface.md#bo4)
-* [IW](_index_interface_.codapi.codapiinterface.md#iw)
-* [MW](_index_interface_.codapi.codapiinterface.md#mw)
-* [WWII](_index_interface_.codapi.codapiinterface.md#wwii)
-* [battlepass](_index_interface_.codapi.codapiinterface.md#battlepass)
-* [currentSeason](_index_interface_.codapi.codapiinterface.md#currentseason)
-* [me](_index_interface_.codapi.codapiinterface.md#me)
-
-### Methods
-
-* [login](_index_interface_.codapi.codapiinterface.md#login)
-* [search](_index_interface_.codapi.codapiinterface.md#search)
 
 ## Properties
 

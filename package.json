@@ -7,7 +7,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "NODE_ENV=production node --trace-warnings test/run.js",
-    "gendocs": "typedoc --options ./typedoc.json",
+    "docs:build": "typedoc --options ./typedoc.json && vuepress build ./docs",
     "dev": "NODE_ENV=development ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,8 +44,9 @@
     "@types/node": "^14.0.27",
     "@types/uniqid": "^5.2.0",
     "dotenv": "^8.2.0",
-    "typescript": "^3.9.7",
     "typedoc": "^0.17.8",
-    "typedoc-plugin-markdown": "^2.4.0"
+    "typedoc-plugin-markdown": "^2.4.0",
+    "typescript": "^3.9.7",
+    "vuepress": "^1.5.3"
   }
 }

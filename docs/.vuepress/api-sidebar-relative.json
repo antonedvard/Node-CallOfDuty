@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Modules",
+    "children": [
+      "modules/_helper_",
+      "classes/_helper_.helper",
+      "modules/_index_",
+      "classes/_index_.codapi",
+      "modules/_index_interface_",
+      "modules/_index_interface_.codapi",
+      "interfaces/_index_interface_.codapi.bo3interface",
+      "interfaces/_index_interface_.codapi.bo4interface",
+      "interfaces/_index_interface_.codapi.battlepassinterface",
+      "interfaces/_index_interface_.codapi.blackoutinterface",
+      "interfaces/_index_interface_.codapi.codapiinterface",
+      "interfaces/_index_interface_.codapi.iwinterface",
+      "interfaces/_index_interface_.codapi.loggedinuserinterface",
+      "interfaces/_index_interface_.codapi.mwgameinterface",
+      "interfaces/_index_interface_.codapi.multiplayerinterface",
+      "interfaces/_index_interface_.codapi.playerdatainterface",
+      "interfaces/_index_interface_.codapi.subgameinterface",
+      "interfaces/_index_interface_.codapi.wwiiinterface",
+      "interfaces/_index_interface_.codapi.warzoneinterface",
+      "interfaces/_index_interface_.codapi.zombieinterface"
+    ]
+  },
+  {
+    "title": "Classes",
+    "children": [
+      "classes/_helper_.helper",
+      "classes/_index_.codapi"
+    ]
+  }
+]

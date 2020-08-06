@@ -1,5 +1,3 @@
-[Call of Duty API - v1.3.0](../globals.md) › ["index"](../modules/_index_.md) › [CodAPI](_index_.codapi.md)
-
 # Class: CodAPI
 
 Quick start example.
@@ -27,60 +25,6 @@ cod.login().then(() => {
 ## Implements
 
 * [CodAPIInterface](../interfaces/_index_interface_.codapi.codapiinterface.md)
-
-## Index
-
-### Constructors
-
-* [constructor](_index_.codapi.md#constructor)
-
-### Properties
-
-* [_BASECOOKIE](_index_.codapi.md#protected-readonly-_basecookie)
-* [_BASEURL](_index_.codapi.md#protected-_baseurl)
-* [_DEBUG](_index_.codapi.md#protected-_debug)
-* [_LOGGEDIN](_index_.codapi.md#protected-_loggedin)
-* [_LOGINURL](_index_.codapi.md#protected-_loginurl)
-* [_PROFILEURL](_index_.codapi.md#protected-_profileurl)
-* [_USERAGENT](_index_.codapi.md#protected-readonly-_useragent)
-* [__currentSeason](_index_.codapi.md#protected-__currentseason)
-* [_ssoCOOKIE](_index_.codapi.md#_ssocookie)
-* [activisionId](_index_.codapi.md#protected-activisionid)
-* [httpI](_index_.codapi.md#protected-httpi)
-* [loginHttp](_index_.codapi.md#protected-loginhttp)
-* [platformUser](_index_.codapi.md#protected-platformuser)
-* [userEmail](_index_.codapi.md#protected-useremail)
-* [userPassword](_index_.codapi.md#protected-userpassword)
-* [userPlatform](_index_.codapi.md#protected-userplatform)
-
-### Accessors
-
-* [BO3](_index_.codapi.md#bo3)
-* [BO4](_index_.codapi.md#bo4)
-* [IW](_index_.codapi.md#iw)
-* [MW](_index_.codapi.md#mw)
-* [WWII](_index_.codapi.md#wwii)
-* [battlepass](_index_.codapi.md#battlepass)
-* [currentSeason](_index_.codapi.md#currentseason)
-* [debug](_index_.codapi.md#debug)
-* [feed](_index_.codapi.md#feed)
-* [loggedIn](_index_.codapi.md#loggedin)
-* [me](_index_.codapi.md#me)
-
-### Methods
-
-* [apiErrorHandling](_index_.codapi.md#protected-apierrorhandling)
-* [buildProfileUri](_index_.codapi.md#protected-buildprofileuri)
-* [buildUri](_index_.codapi.md#protected-builduri)
-* [cleanClientName](_index_.codapi.md#protected-cleanclientname)
-* [getCurrentSeason](_index_.codapi.md#protected-getcurrentseason)
-* [getPurchasable](_index_.codapi.md#getpurchasable)
-* [login](_index_.codapi.md#login)
-* [postReq](_index_.codapi.md#protected-postreq)
-* [search](_index_.codapi.md#search)
-* [sendPostRequest](_index_.codapi.md#protected-sendpostrequest)
-* [sendRequest](_index_.codapi.md#protected-sendrequest)
-* [sendRequestUserInfoOnly](_index_.codapi.md#protected-sendrequestuserinfoonly)
 
 ## Constructors
 
