@@ -6,7 +6,6 @@
   "out": "docs",
   "tsconfig": "./tsconfig.json",
   "excludePrivate": true,
-  "readme": "./README-TSDOC.md",
   "toc": [
     "CodAPI",
     "CodAPIInterface"
