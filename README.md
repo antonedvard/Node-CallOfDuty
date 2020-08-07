@@ -45,3 +45,17 @@ async function start() {
 
 start();
 ```
+
+## Documentation
+
+Currently working on getting those in a decent state and published to gh-pages.
+
+### Todo
+
+There are couple of things that needed to be done.
+
+- Decent testing (I have only been testing this on the run manually)
+- Some functions are buggy/broken.
+- Check if there are more endpoints available.
+- Try to add "Loadouts" endpoints when Activision releases their loadouts in the Companion app.
+- Get more ideas to extend the API.
