@@ -25,18 +25,23 @@ const CONFIG = {
     activisionId: string;
     ratelimit?: RATELIMITCONFIG;
     debug?: boolean;
-}
+};
 
 const cod = new CODAPI(CONFIG);
 
-/**
- * Gives you out your stats if the `platform` and `platformUser` is provided in config
- * if not provided in config you should input the arguments to
- * `.stats(platformUser, platform)`
- */
-cod.MW.warzone.stats().then((data) => {
+
+async function start() {
+    // Start by logging in!
+    await cod.login();
+
+    /**
+     * Gives you out your stats if the `platform` and `platformUser`
+     * is provided in config if not provided in config you should
+     * input the arguments to `.stats(platformUser, platform)`
+     */
+    const data = await cod.MW.warzone.stats();
     console.log(data);
-}).catch((error) => {
-    console.log(error);
-})
+};
+
+start();
 ```
