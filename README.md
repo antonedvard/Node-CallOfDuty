@@ -18,13 +18,13 @@ import CODAPI from "{PATH TO THE DIST FOLDER}";
 
 // ns = CODAPI.CODAPICONFIG
 const CONFIG = {
-    platform?: OneOfPlatforms;
-    platformUser?: string;
-    email: string;
-    password: string;
-    activisionId: string;
-    ratelimit?: RATELIMITCONFIG;
-    debug?: boolean;
+    platform?: OneOfPlatforms; // Your Platform "psn" | "xbl" | "battle" | "uno"(activison)
+    platformUser?: string; // Your platform username
+    email: string; // Your activision user email
+    password: string; // Your activision user password
+    activisionId: string; // Your activision(uno) platform user.
+    ratelimit?: RATELIMITCONFIG; // Ratelimiting
+    debug?: boolean; // Debug flag
 };
 
 const cod = new CODAPI(CONFIG);
