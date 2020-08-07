@@ -44,7 +44,6 @@ class CodAPI extends helper_1.default {
             "unoid": "uno",
             "all": "all",
         };
-        this.login().then(() => { super.getCurrentSeason(); });
     }
     get currentSeason() {
         return this.__currentSeason;

@@ -62,6 +62,3 @@ typings/
 
 test.js
 _.js
-
-dist/
-dist/*

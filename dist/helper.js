@@ -15,6 +15,10 @@ class Helper {
         this._USERAGENT = "a4b471be-4ad2-47e2-ba0e-e1f2aa04bff9";
         this._BASECOOKIE = "new_SiteId=cod; ACT_SSO_LOCALE=en_US;country=US;XSRF-TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;API_CSRF_TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;";
         this._ssoCOOKIE = "";
+        /**
+         * Currently hardcoded, a dynamic function to fetch the
+         * current season would be much more optimal.
+         */
         this.__currentSeason = 5;
         this.userEmail = config.email;
         this.userPassword = config.password;

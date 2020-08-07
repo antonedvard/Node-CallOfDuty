@@ -16,6 +16,10 @@ export default class Helper {
     protected activisionId: string;
     protected httpI: AxiosInstance | null;
     protected loginHttp: AxiosInstance | null;
+    /**
+     * Currently hardcoded, a dynamic function to fetch the
+     * current season would be much more optimal.
+     */
     protected __currentSeason: number;
     constructor(config: CODAPI.CODAPICONFIG);
     get loggedIn(): boolean;
