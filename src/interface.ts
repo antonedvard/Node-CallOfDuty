@@ -1,23 +1,30 @@
 export namespace CODAPI {
-
   export type Platforms = {
-    battle: CODAPI.OneOfPlatforms,
-    steam: CODAPI.OneOfPlatforms,
-    psn: CODAPI.OneOfPlatforms,
-    xbl: CODAPI.OneOfPlatforms,
-    acti: CODAPI.OneOfPlatforms,
-    uno: CODAPI.OneOfPlatforms,
-    unoid: CODAPI.OneOfPlatforms,
-    all: CODAPI.OneOfPlatforms
-  }
+    battle: CODAPI.OneOfPlatforms;
+    steam: CODAPI.OneOfPlatforms;
+    psn: CODAPI.OneOfPlatforms;
+    xbl: CODAPI.OneOfPlatforms;
+    acti: CODAPI.OneOfPlatforms;
+    uno: CODAPI.OneOfPlatforms;
+    unoid: CODAPI.OneOfPlatforms;
+    all: CODAPI.OneOfPlatforms;
+  };
 
   export type RATELIMITCONFIG = {
-    maxRequests: number,
-    perMilliseconds: number,
-    maxRPS?: number,
-  }
+    maxRequests: number;
+    perMilliseconds: number;
+    maxRPS?: number;
+  };
 
-  export type OneOfPlatforms = "battle" | "steam" | "psn" | "xbl" | "acti" | "uno" | "unoid" | "all";
+  export type OneOfPlatforms =
+    | "battle"
+    | "steam"
+    | "psn"
+    | "xbl"
+    | "acti"
+    | "uno"
+    | "unoid"
+    | "all";
 
   export type OneOfGames = "IW" | "WWII" | "BO3" | "BO4" | "MW";
 
@@ -31,16 +38,14 @@ export namespace CODAPI {
     activisionId: string;
     ratelimit?: RATELIMITCONFIG;
     debug?: boolean;
-  }
+  };
 
-  export interface PlayerDataInterface {
-
-  }
+  export interface PlayerDataInterface {}
 
   export type DateForDataInterface = {
     start: number;
     end: number;
-  }
+  };
 
   export interface WarzoneInterface {
     stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
@@ -64,12 +69,16 @@ export namespace CODAPI {
     combat(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
   }
 
-  export interface SubGameInterface {
+  export interface GameInterface {
     warzone?: WarzoneInterface;
     zombie?: ZombieInterface;
     multiplayer?: MultiplayerInterface;
     stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
-    achievements?(gamertag?: string, platform?: OneOfPlatforms, scheduled?: boolean): Promise<any>;
+    achievements?(
+      gamertag?: string,
+      platform?: OneOfPlatforms,
+      scheduled?: boolean
+    ): Promise<any>;
     friends?(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     leaderboard?(page?: number, platform?: OneOfPlatforms): Promise<any>;
     community?(): Promise<any>;
@@ -79,34 +88,38 @@ export namespace CODAPI {
     analysis?(): Promise<any>;
   }
 
-  export interface IWInterface extends SubGameInterface {
-    stats(gamertag: string, platform: OneOfPlatforms,): Promise<any>;
-  }
-  export interface WWIIInterface extends SubGameInterface {
+  export interface IWInterface extends GameInterface {
     stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
-    achievements(gamertag: string, platform: OneOfPlatforms, scheduled?: boolean): Promise<any>;
+  }
+  export interface WWIIInterface extends GameInterface {
+    stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
+    achievements(
+      gamertag: string,
+      platform: OneOfPlatforms,
+      scheduled?: boolean
+    ): Promise<any>;
     community(): Promise<any>;
   }
-  export interface BO3Interface extends SubGameInterface {
+  export interface BO3Interface extends GameInterface {
     stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
   }
 
-  export interface BO4Interface extends SubGameInterface {
-    stats(gamertag: string, platform: OneOfPlatforms,): Promise<any>;
+  export interface BO4Interface extends GameInterface {
+    stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
     friends(gamertag: string, platform: OneOfPlatforms): Promise<any>;
-    leaderboard(page: number, platform: OneOfPlatforms): Promise<any>
+    leaderboard(page: number, platform: OneOfPlatforms): Promise<any>;
     readonly multiplayer: MultiplayerInterface;
     readonly zombie: ZombieInterface;
   }
 
-  export interface MWGameInterface extends SubGameInterface {
+  export interface MWGameInterface extends GameInterface {
     stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     friends(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     leaderboard(page?: number, platform?: OneOfPlatforms): Promise<any>;
     loot(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     weekly(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     battle(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
-    analysis(gamertag?: string, platform?: OneOfPlatforms): Promise<any>
+    analysis(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     readonly warzone: WarzoneInterface;
     readonly multiplayer: MultiplayerInterface;
   }
@@ -120,8 +133,7 @@ export namespace CODAPI {
     info(): Promise<any>;
     presence(): Promise<any>;
     loggedInIds(): Promise<any>;
-    giftableFriends(unoId: string,
-      itemSku: number,): Promise<any>;
+    giftableFriends(unoId: string, itemSku: number): Promise<any>;
     purchaseItem(): Promise<any>;
     connectedAccounts(): Promise<any>;
     getCodPoints(): Promise<any>;

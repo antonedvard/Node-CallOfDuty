@@ -50,7 +50,7 @@ export declare namespace CODAPI {
         stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
         combat(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
     }
-    interface SubGameInterface {
+    interface GameInterface {
         warzone?: WarzoneInterface;
         zombie?: ZombieInterface;
         multiplayer?: MultiplayerInterface;
@@ -64,25 +64,25 @@ export declare namespace CODAPI {
         battle?(): Promise<any>;
         analysis?(): Promise<any>;
     }
-    interface IWInterface extends SubGameInterface {
+    interface IWInterface extends GameInterface {
         stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
     }
-    interface WWIIInterface extends SubGameInterface {
+    interface WWIIInterface extends GameInterface {
         stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
         achievements(gamertag: string, platform: OneOfPlatforms, scheduled?: boolean): Promise<any>;
         community(): Promise<any>;
     }
-    interface BO3Interface extends SubGameInterface {
+    interface BO3Interface extends GameInterface {
         stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
     }
-    interface BO4Interface extends SubGameInterface {
+    interface BO4Interface extends GameInterface {
         stats(gamertag: string, platform: OneOfPlatforms): Promise<any>;
         friends(gamertag: string, platform: OneOfPlatforms): Promise<any>;
         leaderboard(page: number, platform: OneOfPlatforms): Promise<any>;
         readonly multiplayer: MultiplayerInterface;
         readonly zombie: ZombieInterface;
     }
-    interface MWGameInterface extends SubGameInterface {
+    interface MWGameInterface extends GameInterface {
         stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
         friends(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
         leaderboard(page?: number, platform?: OneOfPlatforms): Promise<any>;

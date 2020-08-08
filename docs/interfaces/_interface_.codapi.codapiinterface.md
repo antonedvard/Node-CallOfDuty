@@ -14,7 +14,7 @@
 
 • **BO3**: *[BO3Interface](_interface_.codapi.bo3interface.md)*
 
-*Defined in [interface.ts:135](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L135)*
+*Defined in [interface.ts:147](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L147)*
 
 ___
 
@@ -22,7 +22,7 @@ ___
 
 • **BO4**: *[BO4Interface](_interface_.codapi.bo4interface.md)*
 
-*Defined in [interface.ts:136](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L136)*
+*Defined in [interface.ts:148](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L148)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **IW**: *[IWInterface](_interface_.codapi.iwinterface.md)*
 
-*Defined in [interface.ts:133](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L133)*
+*Defined in [interface.ts:145](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L145)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **MW**: *[MWGameInterface](_interface_.codapi.mwgameinterface.md)*
 
-*Defined in [interface.ts:137](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L137)*
+*Defined in [interface.ts:149](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L149)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **WWII**: *[WWIIInterface](_interface_.codapi.wwiiinterface.md)*
 
-*Defined in [interface.ts:134](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L134)*
+*Defined in [interface.ts:146](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L146)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **battlepass**: *[BattlePassInterface](_interface_.codapi.battlepassinterface.md)*
 
-*Defined in [interface.ts:138](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L138)*
+*Defined in [interface.ts:150](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L150)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **currentSeason**: *number*
 
-*Defined in [interface.ts:140](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L140)*
+*Defined in [interface.ts:152](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L152)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 • **me**: *[LoggedInUserInterface](_interface_.codapi.loggedinuserinterface.md)*
 
-*Defined in [interface.ts:139](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L139)*
+*Defined in [interface.ts:151](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L151)*
 
 ## Methods
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **login**(): *Promise‹any›*
 
-*Defined in [interface.ts:131](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L131)*
+*Defined in [interface.ts:143](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L143)*
 
 **Returns:** *Promise‹any›*
 
@@ -88,7 +88,7 @@ ___
 
 ▸ **search**(`gamertag`: string, `platform`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:132](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L132)*
+*Defined in [interface.ts:144](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L144)*
 
 **Parameters:**
 

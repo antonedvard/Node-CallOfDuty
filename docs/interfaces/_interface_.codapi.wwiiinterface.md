@@ -2,7 +2,7 @@
 
 ## Hierarchy
 
-* [SubGameInterface](_interface_.codapi.subgameinterface.md)
+* [GameInterface](_interface_.codapi.gameinterface.md)
 
   ↳ **WWIIInterface**
 
@@ -12,9 +12,9 @@
 
 • **multiplayer**? : *[MultiplayerInterface](_interface_.codapi.multiplayerinterface.md)*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[multiplayer](_interface_.codapi.subgameinterface.md#optional-multiplayer)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[multiplayer](_interface_.codapi.gameinterface.md#optional-multiplayer)*
 
-*Defined in [interface.ts:70](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L70)*
+*Defined in [interface.ts:75](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L75)*
 
 ___
 
@@ -22,9 +22,9 @@ ___
 
 • **warzone**? : *[WarzoneInterface](_interface_.codapi.warzoneinterface.md)*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[warzone](_interface_.codapi.subgameinterface.md#optional-warzone)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[warzone](_interface_.codapi.gameinterface.md#optional-warzone)*
 
-*Defined in [interface.ts:68](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L68)*
+*Defined in [interface.ts:73](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L73)*
 
 ___
 
@@ -32,9 +32,9 @@ ___
 
 • **zombie**? : *[ZombieInterface](_interface_.codapi.zombieinterface.md)*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[zombie](_interface_.codapi.subgameinterface.md#optional-zombie)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[zombie](_interface_.codapi.gameinterface.md#optional-zombie)*
 
-*Defined in [interface.ts:69](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L69)*
+*Defined in [interface.ts:74](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L74)*
 
 ## Methods
 
@@ -42,9 +42,9 @@ ___
 
 ▸ **achievements**(`gamertag`: string, `platform`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms), `scheduled?`: undefined | false | true): *Promise‹any›*
 
-*Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[achievements](_interface_.codapi.subgameinterface.md#optional-achievements)*
+*Overrides [GameInterface](_interface_.codapi.gameinterface.md).[achievements](_interface_.codapi.gameinterface.md#optional-achievements)*
 
-*Defined in [interface.ts:87](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L87)*
+*Defined in [interface.ts:96](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L96)*
 
 **Parameters:**
 
@@ -62,9 +62,9 @@ ___
 
 ▸ **analysis**(): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[analysis](_interface_.codapi.subgameinterface.md#optional-analysis)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[analysis](_interface_.codapi.gameinterface.md#optional-analysis)*
 
-*Defined in [interface.ts:79](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L79)*
+*Defined in [interface.ts:88](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L88)*
 
 **Returns:** *Promise‹any›*
 
@@ -74,9 +74,9 @@ ___
 
 ▸ **battle**(): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[battle](_interface_.codapi.subgameinterface.md#optional-battle)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[battle](_interface_.codapi.gameinterface.md#optional-battle)*
 
-*Defined in [interface.ts:78](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L78)*
+*Defined in [interface.ts:87](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L87)*
 
 **Returns:** *Promise‹any›*
 
@@ -86,9 +86,9 @@ ___
 
 ▸ **community**(): *Promise‹any›*
 
-*Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[community](_interface_.codapi.subgameinterface.md#optional-community)*
+*Overrides [GameInterface](_interface_.codapi.gameinterface.md).[community](_interface_.codapi.gameinterface.md#optional-community)*
 
-*Defined in [interface.ts:88](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L88)*
+*Defined in [interface.ts:101](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L101)*
 
 **Returns:** *Promise‹any›*
 
@@ -98,9 +98,9 @@ ___
 
 ▸ **friends**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[friends](_interface_.codapi.subgameinterface.md#optional-friends)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[friends](_interface_.codapi.gameinterface.md#optional-friends)*
 
-*Defined in [interface.ts:73](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L73)*
+*Defined in [interface.ts:82](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L82)*
 
 **Parameters:**
 
@@ -117,9 +117,9 @@ ___
 
 ▸ **leaderboard**(`page?`: undefined | number, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[leaderboard](_interface_.codapi.subgameinterface.md#optional-leaderboard)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[leaderboard](_interface_.codapi.gameinterface.md#optional-leaderboard)*
 
-*Defined in [interface.ts:74](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L74)*
+*Defined in [interface.ts:83](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L83)*
 
 **Parameters:**
 
@@ -136,9 +136,9 @@ ___
 
 ▸ **loot**(): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[loot](_interface_.codapi.subgameinterface.md#optional-loot)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[loot](_interface_.codapi.gameinterface.md#optional-loot)*
 
-*Defined in [interface.ts:76](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L76)*
+*Defined in [interface.ts:85](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L85)*
 
 **Returns:** *Promise‹any›*
 
@@ -148,9 +148,9 @@ ___
 
 ▸ **stats**(`gamertag`: string, `platform`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[stats](_interface_.codapi.subgameinterface.md#stats)*
+*Overrides [GameInterface](_interface_.codapi.gameinterface.md).[stats](_interface_.codapi.gameinterface.md#stats)*
 
-*Defined in [interface.ts:86](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L86)*
+*Defined in [interface.ts:95](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L95)*
 
 **Parameters:**
 
@@ -167,8 +167,8 @@ ___
 
 ▸ **weekly**(): *Promise‹any›*
 
-*Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[weekly](_interface_.codapi.subgameinterface.md#optional-weekly)*
+*Inherited from [GameInterface](_interface_.codapi.gameinterface.md).[weekly](_interface_.codapi.gameinterface.md#optional-weekly)*
 
-*Defined in [interface.ts:77](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L77)*
+*Defined in [interface.ts:86](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L86)*
 
 **Returns:** *Promise‹any›*

@@ -1,8 +1,8 @@
-# Interface: SubGameInterface
+# Interface: GameInterface
 
 ## Hierarchy
 
-* **SubGameInterface**
+* **GameInterface**
 
   ↳ [IWInterface](_interface_.codapi.iwinterface.md)
 
@@ -20,7 +20,7 @@
 
 • **multiplayer**? : *[MultiplayerInterface](_interface_.codapi.multiplayerinterface.md)*
 
-*Defined in [interface.ts:70](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L70)*
+*Defined in [interface.ts:75](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L75)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **warzone**? : *[WarzoneInterface](_interface_.codapi.warzoneinterface.md)*
 
-*Defined in [interface.ts:68](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L68)*
+*Defined in [interface.ts:73](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L73)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **zombie**? : *[ZombieInterface](_interface_.codapi.zombieinterface.md)*
 
-*Defined in [interface.ts:69](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L69)*
+*Defined in [interface.ts:74](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L74)*
 
 ## Methods
 
@@ -44,7 +44,7 @@ ___
 
 ▸ **achievements**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms), `scheduled?`: undefined | false | true): *Promise‹any›*
 
-*Defined in [interface.ts:72](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L72)*
+*Defined in [interface.ts:77](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L77)*
 
 **Parameters:**
 
@@ -62,7 +62,7 @@ ___
 
 ▸ **analysis**(): *Promise‹any›*
 
-*Defined in [interface.ts:79](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L79)*
+*Defined in [interface.ts:88](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L88)*
 
 **Returns:** *Promise‹any›*
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **battle**(): *Promise‹any›*
 
-*Defined in [interface.ts:78](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L78)*
+*Defined in [interface.ts:87](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L87)*
 
 **Returns:** *Promise‹any›*
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **community**(): *Promise‹any›*
 
-*Defined in [interface.ts:75](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L75)*
+*Defined in [interface.ts:84](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L84)*
 
 **Returns:** *Promise‹any›*
 
@@ -92,7 +92,7 @@ ___
 
 ▸ **friends**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:73](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L73)*
+*Defined in [interface.ts:82](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L82)*
 
 **Parameters:**
 
@@ -109,7 +109,7 @@ ___
 
 ▸ **leaderboard**(`page?`: undefined | number, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:74](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L74)*
+*Defined in [interface.ts:83](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L83)*
 
 **Parameters:**
 
@@ -126,7 +126,7 @@ ___
 
 ▸ **loot**(): *Promise‹any›*
 
-*Defined in [interface.ts:76](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L76)*
+*Defined in [interface.ts:85](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L85)*
 
 **Returns:** *Promise‹any›*
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **stats**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:71](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L71)*
+*Defined in [interface.ts:76](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L76)*
 
 **Parameters:**
 
@@ -153,6 +153,6 @@ ___
 
 ▸ **weekly**(): *Promise‹any›*
 
-*Defined in [interface.ts:77](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L77)*
+*Defined in [interface.ts:86](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L86)*
 
 **Returns:** *Promise‹any›*

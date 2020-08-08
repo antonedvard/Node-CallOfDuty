@@ -10,7 +10,7 @@
 
 ▸ **info**(): *Promise‹any›*
 
-*Defined in [interface.ts:116](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L116)*
+*Defined in [interface.ts:129](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L129)*
 
 **Returns:** *Promise‹any›*
 
@@ -20,6 +20,6 @@ ___
 
 ▸ **loot**(): *Promise‹any›*
 
-*Defined in [interface.ts:115](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L115)*
+*Defined in [interface.ts:128](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L128)*
 
 **Returns:** *Promise‹any›*

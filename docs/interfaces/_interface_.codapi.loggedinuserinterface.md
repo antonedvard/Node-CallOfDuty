@@ -10,7 +10,7 @@
 
 ▸ **connectedAccounts**(): *Promise‹any›*
 
-*Defined in [interface.ts:126](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L126)*
+*Defined in [interface.ts:138](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L138)*
 
 **Returns:** *Promise‹any›*
 
@@ -20,7 +20,7 @@ ___
 
 ▸ **getCodPoints**(): *Promise‹any›*
 
-*Defined in [interface.ts:127](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L127)*
+*Defined in [interface.ts:139](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L139)*
 
 **Returns:** *Promise‹any›*
 
@@ -30,7 +30,7 @@ ___
 
 ▸ **giftableFriends**(`unoId`: string, `itemSku`: number): *Promise‹any›*
 
-*Defined in [interface.ts:123](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L123)*
+*Defined in [interface.ts:136](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L136)*
 
 **Parameters:**
 
@@ -47,7 +47,7 @@ ___
 
 ▸ **info**(): *Promise‹any›*
 
-*Defined in [interface.ts:120](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L120)*
+*Defined in [interface.ts:133](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L133)*
 
 **Returns:** *Promise‹any›*
 
@@ -57,7 +57,7 @@ ___
 
 ▸ **loggedInIds**(): *Promise‹any›*
 
-*Defined in [interface.ts:122](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L122)*
+*Defined in [interface.ts:135](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L135)*
 
 **Returns:** *Promise‹any›*
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **presence**(): *Promise‹any›*
 
-*Defined in [interface.ts:121](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L121)*
+*Defined in [interface.ts:134](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L134)*
 
 **Returns:** *Promise‹any›*
 
@@ -77,6 +77,6 @@ ___
 
 ▸ **purchaseItem**(): *Promise‹any›*
 
-*Defined in [interface.ts:125](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/interface.ts#L125)*
+*Defined in [interface.ts:137](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L137)*
 
 **Returns:** *Promise‹any›*
