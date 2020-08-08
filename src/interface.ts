@@ -71,18 +71,6 @@ export namespace CODAPI {
 
   export interface GameInterface {
     stats(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
-    // achievements?(
-    //   gamertag?: string,
-    //   platform?: OneOfPlatforms,
-    //   scheduled?: boolean
-    // ): Promise<any>;
-    // friends?(gamertag?: string, platform?: OneOfPlatforms): Promise<any>;
-    // leaderboard?(page?: number, platform?: OneOfPlatforms): Promise<any>;
-    // community?(): Promise<any>;
-    // loot?(): Promise<any>;
-    // weekly?(): Promise<any>;
-    // battle?(): Promise<any>;
-    // analysis?(): Promise<any>;
   }
 
   export interface IWInterface extends GameInterface {
