@@ -1,5 +1,5 @@
 import { AxiosResponse, AxiosInstance } from "axios";
-import { CODAPI } from "./index.interface";
+import { CODAPI } from "./interface";
 export default class Helper {
     protected _BASEURL: string;
     protected _LOGINURL: string;

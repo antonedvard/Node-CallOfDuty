@@ -1,22 +1,22 @@
 import Helper from "./helper";
-import { CODAPI } from "./index.interface";
+import { CODAPI } from "./interface";
 /**
-* Quick start example.
-* ```typescript
-* import CODAPI from "node-codapi";
-* const config = {
-*  platform: process.env.COD_PLATFORM,
-*  platformUser: process.env.COD_PLATFORM_USER,
-*  email: process.env.COD_LOGIN,
-*  password: process.env.COD_PASS,
-*  activisionId: process.env.ACTIVISION_ID,
-* }
-* const cod = new CODAPI(config);
-* cod.login().then(() => {
-*   // Play with the API methods.
-* })
-* ```
-*/
+ * Quick start example.
+ * ```typescript
+ * import CODAPI from "node-codapi";
+ * const config = {
+ *  platform: process.env.COD_PLATFORM,
+ *  platformUser: process.env.COD_PLATFORM_USER,
+ *  email: process.env.COD_LOGIN,
+ *  password: process.env.COD_PASS,
+ *  activisionId: process.env.ACTIVISION_ID,
+ * }
+ * const cod = new CODAPI(config);
+ * cod.login().then(() => {
+ *   // Play with the API methods.
+ * })
+ * ```
+ */
 declare class CodAPI extends Helper implements CODAPI.CodAPIInterface {
     private readonly __platforms;
     constructor(config: CODAPI.CODAPICONFIG);
@@ -36,9 +36,9 @@ declare class CodAPI extends Helper implements CODAPI.CodAPIInterface {
         friends: (gamertag?: string, platform?: CODAPI.OneOfPlatforms) => Promise<any>;
     };
     /**
-    *
-    *
-    */
+     *
+     *
+     */
     search(gamertag?: string, platform?: CODAPI.OneOfPlatforms): Promise<any>;
     getPurchasable(platform?: CODAPI.OneOfPlatforms): Promise<any>;
 }

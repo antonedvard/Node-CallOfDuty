@@ -23,28 +23,31 @@ class Helper {
         this.userEmail = config.email;
         this.userPassword = config.password;
         this.userPlatform = config.platform === undefined ? "psn" : config.platform;
-        this.platformUser = config.platformUser === undefined ? "" : config.platformUser;
-        this.activisionId = config.activisionId === undefined ? "" : config.activisionId;
-        this._DEBUG = process.env.DEBUG === "true" || config.debug === true ? true : false;
+        this.platformUser =
+            config.platformUser === undefined ? "" : config.platformUser;
+        this.activisionId =
+            config.activisionId === undefined ? "" : config.activisionId;
+        this._DEBUG =
+            process.env.DEBUG === "true" || config.debug === true ? true : false;
         this.httpI = axios_1.default.create({
             headers: {
                 common: {
                     "content-type": "application/json",
-                    "Cookie": this._BASECOOKIE,
-                    "userAgent": this._USERAGENT,
+                    Cookie: this._BASECOOKIE,
+                    userAgent: this._USERAGENT,
                     "x-requested-with": this._USERAGENT,
-                    "Accept": "application/json, text/javascript, */*; q=0.01",
-                    "Connection": "keep-alive",
+                    Accept: "application/json, text/javascript, */*; q=0.01",
+                    Connection: "keep-alive",
                 },
             },
         });
         this.loginHttp = this.httpI;
         if (this._DEBUG) {
-            this.httpI.interceptors.request.use(resp => {
+            this.httpI.interceptors.request.use((resp) => {
                 resp.headers["request-startTime"] = process.hrtime();
                 return resp;
             });
-            this.httpI.interceptors.response.use(response => {
+            this.httpI.interceptors.response.use((response) => {
                 const start = response.config.headers["request-startTime"];
                 const end = process.hrtime(start);
                 const milliseconds = Math.round(end[0] * 1000 + end[1] / 1000000);
@@ -60,7 +63,6 @@ class Helper {
             console.log("Could not parse ratelimit object. ignoring.");
         }
     }
-    ;
     get loggedIn() {
         return this._LOGGEDIN;
     }
@@ -101,21 +103,20 @@ class Helper {
         return new Promise((resolve, reject) => {
             if (!this._LOGGEDIN)
                 reject("Not Logged In.");
-            this.httpI.get(url)
+            this.httpI
+                .get(url)
                 .then((response) => {
                 if (response.status == 403)
                     reject({
                         status: 403,
-                        msg: "Forbidden. You may be IP banned."
+                        msg: "Forbidden. You may be IP banned.",
                     });
                 if (this._DEBUG === true) {
                     console.log(`[DEBUG]`, `Build URI: ${url}`);
                     console.log(`[DEBUG]`, `Round trip took: ${response.headers["request-duration"]}ms.`);
                     console.log(`[DEBUG]`, `Response Size: ${JSON.stringify(response.data).length} bytes.`);
                 }
-                resolve(JSON.parse(response.data
-                    .replace(/^userInfo\(/, "")
-                    .replace(/\);$/, "")));
+                resolve(JSON.parse(response.data.replace(/^userInfo\(/, "").replace(/\);$/, "")));
             })
                 .catch((error) => reject(error));
         });
@@ -124,7 +125,9 @@ class Helper {
         return new Promise((resolve, reject) => {
             if (!this._LOGGEDIN)
                 reject("Not Logged In.");
-            this.httpI.get(url).then((response) => {
+            this.httpI
+                .get(url)
+                .then((response) => {
                 if (this.debug === true) {
                     console.log(`[DEBUG]`, `Build URI: ${url}`);
                     console.log(`[DEBUG]`, `Round trip took: ${response.headers["request-duration"]}ms.`);
@@ -147,7 +150,8 @@ class Helper {
         return new Promise((resolve, reject) => {
             if (!this._LOGGEDIN)
                 reject("Not Logged In.");
-            this.httpI.post(url, JSON.stringify(data))
+            this.httpI
+                .post(url, JSON.stringify(data))
                 .then((response) => {
                 if (this.debug === true) {
                     console.log(`[DEBUG]`, `Build URI: ${url}`);
@@ -191,26 +195,26 @@ class Helper {
                         : {
                             status: 200,
                             ok: true,
-                            msg: "No error returned from API."
+                            msg: "No error returned from API.",
                         };
                 switch (apiErrorMessage) {
                     case "Not permitted: user not found":
                         return {
                             status: 404,
                             ok: false,
-                            msg: "Not found. Incorrect username or platform? Misconfigured privacy settings?"
+                            msg: "Not found. Incorrect username or platform? Misconfigured privacy settings?",
                         };
                     case "Not permitted: rate limit exceeded":
                         return {
                             status: 429,
                             ok: false,
-                            msg: "Too many requests. Try again in a few minutes."
+                            msg: "Too many requests. Try again in a few minutes.",
                         };
                     case "Error from datastore":
                         return {
                             status: 500,
                             ok: false,
-                            msg: "Internal server error. Request failed, try again."
+                            msg: "Internal server error. Request failed, try again.",
                         };
                     default:
                         return apiErrorMessage;
@@ -220,31 +224,31 @@ class Helper {
                 return {
                     status: 401,
                     ok: false,
-                    msg: "401 - Unauthorized. Incorrect username or password."
+                    msg: "401 - Unauthorized. Incorrect username or password.",
                 };
             case 403:
                 return {
                     status: 403,
                     ok: false,
-                    msg: "Forbidden. You may have been IP banned. Try again in a few minutes."
+                    msg: "Forbidden. You may have been IP banned. Try again in a few minutes.",
                 };
             case 500:
                 return {
                     status: 500,
                     ok: false,
-                    msg: "Internal server error. Request failed, try again."
+                    msg: "Internal server error. Request failed, try again.",
                 };
             case 502:
                 return {
                     status: 502,
                     ok: false,
-                    msg: "Bad gateway. Request failed, try again."
+                    msg: "Bad gateway. Request failed, try again.",
                 };
             default:
                 return {
                     status: 999,
                     ok: false,
-                    msg: `We Could not get a valid reason for a failure. Status: ${response.status}`
+                    msg: `We Could not get a valid reason for a failure. Status: ${response.status}`,
                 };
         }
     }
