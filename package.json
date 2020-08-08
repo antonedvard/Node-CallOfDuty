@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lierrmm/Node-CallOfDuty.git"
+    "url": "git+https://github.com/antonedvard/act-cod-api.git"
   },
   "keywords": [
     "br",
@@ -28,13 +28,9 @@
   "author": "Liam Gaskell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Lierrmm/Node-CallOfDuty/issues"
+    "url": "https://github.com/antonedvard/act-cod-api/issues"
   },
-  "homepage": "https://github.com/Lierrmm/Node-CallOfDuty#readme",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/Lierrmm"
-  },
+  "homepage": "https://github.com/antonedvard/act-cod-api#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "axios-rate-limit": "^1.2.1",
