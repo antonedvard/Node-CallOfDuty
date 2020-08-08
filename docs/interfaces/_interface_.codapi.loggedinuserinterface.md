@@ -10,6 +10,8 @@
 
 ▸ **connectedAccounts**(): *Promise‹any›*
 
+Defined in interface.ts:126
+
 **Returns:** *Promise‹any›*
 
 ___
@@ -18,6 +20,8 @@ ___
 
 ▸ **getCodPoints**(): *Promise‹any›*
 
+Defined in interface.ts:127
+
 **Returns:** *Promise‹any›*
 
 ___
@@ -25,6 +29,8 @@ ___
 ###  giftableFriends
 
 ▸ **giftableFriends**(`unoId`: string, `itemSku`: number): *Promise‹any›*
+
+Defined in interface.ts:123
 
 **Parameters:**
 
@@ -41,6 +47,8 @@ ___
 
 ▸ **info**(): *Promise‹any›*
 
+Defined in interface.ts:120
+
 **Returns:** *Promise‹any›*
 
 ___
@@ -48,6 +56,8 @@ ___
 ###  loggedInIds
 
 ▸ **loggedInIds**(): *Promise‹any›*
+
+Defined in interface.ts:122
 
 **Returns:** *Promise‹any›*
 
@@ -57,6 +67,8 @@ ___
 
 ▸ **presence**(): *Promise‹any›*
 
+Defined in interface.ts:121
+
 **Returns:** *Promise‹any›*
 
 ___
@@ -64,5 +76,7 @@ ___
 ###  purchaseItem
 
 ▸ **purchaseItem**(): *Promise‹any›*
+
+Defined in interface.ts:125
 
 **Returns:** *Promise‹any›*

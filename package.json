@@ -7,7 +7,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "NODE_ENV=production node --trace-warnings test/run.js",
-    "docs:build": "typedoc --options ./typedoc.json && vuepress build ./docs",
+    "docs:build": "typedoc --options ./typedoc.js && vuepress build ./docs --no-cache",
     "dev": "NODE_ENV=development ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

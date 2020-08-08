@@ -10,6 +10,8 @@
 
 ▸ **info**(): *Promise‹any›*
 
+Defined in interface.ts:116
+
 **Returns:** *Promise‹any›*
 
 ___
@@ -17,5 +19,7 @@ ___
 ###  loot
 
 ▸ **loot**(): *Promise‹any›*
+
+Defined in interface.ts:115
 
 **Returns:** *Promise‹any›*
