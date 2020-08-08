@@ -2,20 +2,27 @@ import Helper from "./helper";
 import { CODAPI } from "./interface";
 /**
  * Quick start example.
- * ```typescript
- * import CODAPI from "node-codapi";
- * const config = {
- *  platform: process.env.COD_PLATFORM,
- *  platformUser: process.env.COD_PLATFORM_USER,
- *  email: process.env.COD_LOGIN,
- *  password: process.env.COD_PASS,
- *  activisionId: process.env.ACTIVISION_ID,
- * }
- * const cod = new CODAPI(config);
- * cod.login().then(() => {
- *   // Play with the API methods.
- * })
- * ```
+ * ```js
+import CODAPI from "{PATH TO THE DIST FOLDER}";
+// ns = CODAPI.CODAPICONFIG
+const CONFIG = {
+    platform?: OneOfPlatforms; // Your Platform "psn" | "xbl" | "battle" | "uno"(activison)
+    platformUser?: string; // Your platform username
+    email: string; // Your activision user email
+    password: string; // Your activision user password
+    activisionId: string; // Your activision(uno) platform user.
+    ratelimit?: RATELIMITCONFIG; // Ratelimiting
+    debug?: boolean; // Debug flag
+};
+const cod = new CODAPI(CONFIG);
+async function start() {
+    // Start by logging in!
+    await cod.login();
+    const data = await cod.MW.warzone.stats();
+    console.log(data);
+};
+start();
+```
  */
 declare class CodAPI extends Helper implements CODAPI.CodAPIInterface {
     private readonly __platforms;

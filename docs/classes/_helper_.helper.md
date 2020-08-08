@@ -12,7 +12,7 @@
 
 \+ **new Helper**(`config`: [CODAPICONFIG](../modules/_interface_.codapi.md#codapiconfig)): *[Helper](_helper_.helper.md)*
 
-*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L31)*
+*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L31)*
 
 **Parameters:**
 
@@ -28,7 +28,7 @@ Name | Type |
 
 • **_BASECOOKIE**: *string* = "new_SiteId=cod; ACT_SSO_LOCALE=en_US;country=US;XSRF-TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;API_CSRF_TOKEN=68e8b62e-1d9d-4ce1-b93f-cbe5ff31a041;"
 
-*Defined in [helper.ts:15](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L15)*
+*Defined in [helper.ts:15](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L15)*
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **_BASEURL**: *string* = "https://my.callofduty.com/api/papi-client/"
 
-*Defined in [helper.ts:8](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L8)*
+*Defined in [helper.ts:8](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L8)*
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **_DEBUG**: *boolean* = true
 
-*Defined in [helper.ts:12](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L12)*
+*Defined in [helper.ts:12](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L12)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **_LOGGEDIN**: *boolean* = false
 
-*Defined in [helper.ts:11](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L11)*
+*Defined in [helper.ts:11](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L11)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **_LOGINURL**: *string* = "https://profile.callofduty.com/cod/mapp/"
 
-*Defined in [helper.ts:9](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L9)*
+*Defined in [helper.ts:9](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L9)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **_PROFILEURL**: *string* = "https://profile.callofduty.com/"
 
-*Defined in [helper.ts:10](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L10)*
+*Defined in [helper.ts:10](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L10)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **_USERAGENT**: *string* = "a4b471be-4ad2-47e2-ba0e-e1f2aa04bff9"
 
-*Defined in [helper.ts:13](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L13)*
+*Defined in [helper.ts:13](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L13)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **__currentSeason**: *number* = 5
 
-*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L31)*
+*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L31)*
 
 Currently hardcoded, a dynamic function to fetch the
 current season would be much more optimal.
@@ -95,7 +95,7 @@ ___
 
 • **_ssoCOOKIE**: *string* = ""
 
-*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L17)*
+*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L17)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 • **activisionId**: *string*
 
-*Defined in [helper.ts:23](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L23)*
+*Defined in [helper.ts:23](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L23)*
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 • **httpI**: *AxiosInstance | null*
 
-*Defined in [helper.ts:25](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L25)*
+*Defined in [helper.ts:25](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L25)*
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 • **loginHttp**: *AxiosInstance | null*
 
-*Defined in [helper.ts:26](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L26)*
+*Defined in [helper.ts:26](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L26)*
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 • **platformUser**: *string*
 
-*Defined in [helper.ts:22](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L22)*
+*Defined in [helper.ts:22](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L22)*
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 • **userEmail**: *string*
 
-*Defined in [helper.ts:19](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L19)*
+*Defined in [helper.ts:19](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L19)*
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 • **userPassword**: *string*
 
-*Defined in [helper.ts:20](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L20)*
+*Defined in [helper.ts:20](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L20)*
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 • **userPlatform**: *[OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)*
 
-*Defined in [helper.ts:21](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L21)*
+*Defined in [helper.ts:21](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L21)*
 
 ## Accessors
 
@@ -159,7 +159,7 @@ ___
 
 • **get debug**(): *boolean*
 
-*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L86)*
+*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L86)*
 
 **Returns:** *boolean*
 
@@ -169,7 +169,7 @@ ___
 
 • **get loggedIn**(): *boolean*
 
-*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L82)*
+*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L82)*
 
 **Returns:** *boolean*
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **apiErrorHandling**(`response`: AxiosResponse | any): *object*
 
-*Defined in [helper.ts:245](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L245)*
+*Defined in [helper.ts:245](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L245)*
 
 **Parameters:**
 
@@ -195,7 +195,7 @@ ___
 
 ▸ **buildProfileUri**(`str`: string): *string*
 
-*Defined in [helper.ts:118](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L118)*
+*Defined in [helper.ts:118](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L118)*
 
 **Parameters:**
 
@@ -211,7 +211,7 @@ ___
 
 ▸ **buildUri**(`str`: string): *string*
 
-*Defined in [helper.ts:114](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L114)*
+*Defined in [helper.ts:114](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L114)*
 
 **Parameters:**
 
@@ -227,7 +227,7 @@ ___
 
 ▸ **cleanClientName**(`gamertag`: string): *string*
 
-*Defined in [helper.ts:122](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L122)*
+*Defined in [helper.ts:122](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L122)*
 
 **Parameters:**
 
@@ -243,7 +243,7 @@ ___
 
 ▸ **getCurrentSeason**(): *void*
 
-*Defined in [helper.ts:94](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L94)*
+*Defined in [helper.ts:94](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L94)*
 
 **Returns:** *void*
 
@@ -253,7 +253,7 @@ ___
 
 ▸ **postReq**(`url`: string, `data`: object, `headers`: object | null): *Promise‹any›*
 
-*Defined in [helper.ts:228](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L228)*
+*Defined in [helper.ts:228](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L228)*
 
 **Parameters:**
 
@@ -271,7 +271,7 @@ ___
 
 ▸ **sendPostRequest**(`url`: string, `data`: object): *Promise‹AxiosResponse›*
 
-*Defined in [helper.ts:193](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L193)*
+*Defined in [helper.ts:193](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L193)*
 
 **Parameters:**
 
@@ -288,7 +288,7 @@ ___
 
 ▸ **sendRequest**(`url`: string): *Promise‹any›*
 
-*Defined in [helper.ts:158](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L158)*
+*Defined in [helper.ts:158](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L158)*
 
 **Parameters:**
 
@@ -304,7 +304,7 @@ ___
 
 ▸ **sendRequestUserInfoOnly**(`url`: string): *Promise‹any›*
 
-*Defined in [helper.ts:126](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L126)*
+*Defined in [helper.ts:126](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L126)*
 
 **Parameters:**
 

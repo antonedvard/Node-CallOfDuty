@@ -1,19 +1,26 @@
 # Class: CodAPI
 
 Quick start example.
-```typescript
-import CODAPI from "node-codapi";
-const config = {
- platform: process.env.COD_PLATFORM,
- platformUser: process.env.COD_PLATFORM_USER,
- email: process.env.COD_LOGIN,
- password: process.env.COD_PASS,
- activisionId: process.env.ACTIVISION_ID,
-}
-const cod = new CODAPI(config);
-cod.login().then(() => {
-  // Play with the API methods.
-})
+```js
+import CODAPI from "{PATH TO THE DIST FOLDER}";
+// ns = CODAPI.CODAPICONFIG
+const CONFIG = {
+platform?: OneOfPlatforms; // Your Platform "psn" | "xbl" | "battle" | "uno"(activison)
+platformUser?: string; // Your platform username
+email: string; // Your activision user email
+password: string; // Your activision user password
+activisionId: string; // Your activision(uno) platform user.
+ratelimit?: RATELIMITCONFIG; // Ratelimiting
+debug?: boolean; // Debug flag
+};
+const cod = new CODAPI(CONFIG);
+async function start() {
+// Start by logging in!
+await cod.login();
+const data = await cod.MW.warzone.stats();
+console.log(data);
+};
+start();
 ```
 
 ## Hierarchy
@@ -34,7 +41,7 @@ cod.login().then(() => {
 
 *Overrides [Helper](_helper_.helper.md).[constructor](_helper_.helper.md#constructor)*
 
-*Defined in [index.ts:36](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L36)*
+*Defined in [index.ts:43](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L43)*
 
 **Parameters:**
 
@@ -52,7 +59,7 @@ Name | Type |
 
 *Inherited from [Helper](_helper_.helper.md).[_BASECOOKIE](_helper_.helper.md#protected-readonly-_basecookie)*
 
-*Defined in [helper.ts:15](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L15)*
+*Defined in [helper.ts:15](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L15)*
 
 ___
 
@@ -62,7 +69,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_BASEURL](_helper_.helper.md#protected-_baseurl)*
 
-*Defined in [helper.ts:8](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L8)*
+*Defined in [helper.ts:8](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L8)*
 
 ___
 
@@ -72,7 +79,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_DEBUG](_helper_.helper.md#protected-_debug)*
 
-*Defined in [helper.ts:12](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L12)*
+*Defined in [helper.ts:12](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L12)*
 
 ___
 
@@ -82,7 +89,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_LOGGEDIN](_helper_.helper.md#protected-_loggedin)*
 
-*Defined in [helper.ts:11](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L11)*
+*Defined in [helper.ts:11](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L11)*
 
 ___
 
@@ -92,7 +99,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_LOGINURL](_helper_.helper.md#protected-_loginurl)*
 
-*Defined in [helper.ts:9](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L9)*
+*Defined in [helper.ts:9](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L9)*
 
 ___
 
@@ -102,7 +109,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_PROFILEURL](_helper_.helper.md#protected-_profileurl)*
 
-*Defined in [helper.ts:10](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L10)*
+*Defined in [helper.ts:10](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L10)*
 
 ___
 
@@ -112,7 +119,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_USERAGENT](_helper_.helper.md#protected-readonly-_useragent)*
 
-*Defined in [helper.ts:13](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L13)*
+*Defined in [helper.ts:13](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L13)*
 
 ___
 
@@ -122,7 +129,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[__currentSeason](_helper_.helper.md#protected-__currentseason)*
 
-*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L31)*
+*Defined in [helper.ts:31](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L31)*
 
 Currently hardcoded, a dynamic function to fetch the
 current season would be much more optimal.
@@ -135,7 +142,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[_ssoCOOKIE](_helper_.helper.md#_ssocookie)*
 
-*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L17)*
+*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L17)*
 
 ___
 
@@ -145,7 +152,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[activisionId](_helper_.helper.md#protected-activisionid)*
 
-*Defined in [helper.ts:23](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L23)*
+*Defined in [helper.ts:23](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L23)*
 
 ___
 
@@ -155,7 +162,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[httpI](_helper_.helper.md#protected-httpi)*
 
-*Defined in [helper.ts:25](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L25)*
+*Defined in [helper.ts:25](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L25)*
 
 ___
 
@@ -165,7 +172,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[loginHttp](_helper_.helper.md#protected-loginhttp)*
 
-*Defined in [helper.ts:26](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L26)*
+*Defined in [helper.ts:26](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L26)*
 
 ___
 
@@ -175,7 +182,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[platformUser](_helper_.helper.md#protected-platformuser)*
 
-*Defined in [helper.ts:22](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L22)*
+*Defined in [helper.ts:22](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L22)*
 
 ___
 
@@ -185,7 +192,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[userEmail](_helper_.helper.md#protected-useremail)*
 
-*Defined in [helper.ts:19](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L19)*
+*Defined in [helper.ts:19](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L19)*
 
 ___
 
@@ -195,7 +202,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[userPassword](_helper_.helper.md#protected-userpassword)*
 
-*Defined in [helper.ts:20](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L20)*
+*Defined in [helper.ts:20](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L20)*
 
 ___
 
@@ -205,7 +212,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[userPlatform](_helper_.helper.md#protected-userplatform)*
 
-*Defined in [helper.ts:21](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L21)*
+*Defined in [helper.ts:21](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L21)*
 
 ## Accessors
 
@@ -213,7 +220,7 @@ ___
 
 • **get BO3**(): *[BO3Interface](../interfaces/_interface_.codapi.bo3interface.md)*
 
-*Defined in [index.ts:198](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L198)*
+*Defined in [index.ts:205](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L205)*
 
 **Returns:** *[BO3Interface](../interfaces/_interface_.codapi.bo3interface.md)*
 
@@ -223,7 +230,7 @@ ___
 
 • **get BO4**(): *[BO4Interface](../interfaces/_interface_.codapi.bo4interface.md)*
 
-*Defined in [index.ts:229](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L229)*
+*Defined in [index.ts:236](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L236)*
 
 **Returns:** *[BO4Interface](../interfaces/_interface_.codapi.bo4interface.md)*
 
@@ -233,7 +240,7 @@ ___
 
 • **get IW**(): *[IWInterface](../interfaces/_interface_.codapi.iwinterface.md)*
 
-*Defined in [index.ts:145](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L145)*
+*Defined in [index.ts:152](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L152)*
 
 **Returns:** *[IWInterface](../interfaces/_interface_.codapi.iwinterface.md)*
 
@@ -243,7 +250,7 @@ ___
 
 • **get MW**(): *[MWGameInterface](../interfaces/_interface_.codapi.mwgameinterface.md)*
 
-*Defined in [index.ts:376](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L376)*
+*Defined in [index.ts:383](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L383)*
 
 **Returns:** *[MWGameInterface](../interfaces/_interface_.codapi.mwgameinterface.md)*
 
@@ -253,7 +260,7 @@ ___
 
 • **get WWII**(): *[WWIIInterface](../interfaces/_interface_.codapi.wwiiinterface.md)*
 
-*Defined in [index.ts:161](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L161)*
+*Defined in [index.ts:168](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L168)*
 
 **Returns:** *[WWIIInterface](../interfaces/_interface_.codapi.wwiiinterface.md)*
 
@@ -263,7 +270,7 @@ ___
 
 • **get battlepass**(): *[BattlePassInterface](../interfaces/_interface_.codapi.battlepassinterface.md)*
 
-*Defined in [index.ts:636](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L636)*
+*Defined in [index.ts:643](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L643)*
 
 **Returns:** *[BattlePassInterface](../interfaces/_interface_.codapi.battlepassinterface.md)*
 
@@ -273,7 +280,7 @@ ___
 
 • **get currentSeason**(): *number*
 
-*Defined in [index.ts:42](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L42)*
+*Defined in [index.ts:49](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L49)*
 
 **Returns:** *number*
 
@@ -285,7 +292,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[debug](_helper_.helper.md#debug)*
 
-*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L86)*
+*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L86)*
 
 **Returns:** *boolean*
 
@@ -295,7 +302,7 @@ ___
 
 • **get feed**(): *object*
 
-*Defined in [index.ts:762](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L762)*
+*Defined in [index.ts:769](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L769)*
 
 **Returns:** *object*
 
@@ -311,7 +318,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[loggedIn](_helper_.helper.md#loggedin)*
 
-*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L82)*
+*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L82)*
 
 **Returns:** *boolean*
 
@@ -321,7 +328,7 @@ ___
 
 • **get me**(): *[LoggedInUserInterface](../interfaces/_interface_.codapi.loggedinuserinterface.md)*
 
-*Defined in [index.ts:672](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L672)*
+*Defined in [index.ts:679](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L679)*
 
 **Returns:** *[LoggedInUserInterface](../interfaces/_interface_.codapi.loggedinuserinterface.md)*
 
@@ -333,7 +340,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[apiErrorHandling](_helper_.helper.md#protected-apierrorhandling)*
 
-*Defined in [helper.ts:245](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L245)*
+*Defined in [helper.ts:245](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L245)*
 
 **Parameters:**
 
@@ -351,7 +358,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[buildProfileUri](_helper_.helper.md#protected-buildprofileuri)*
 
-*Defined in [helper.ts:118](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L118)*
+*Defined in [helper.ts:118](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L118)*
 
 **Parameters:**
 
@@ -369,7 +376,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[buildUri](_helper_.helper.md#protected-builduri)*
 
-*Defined in [helper.ts:114](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L114)*
+*Defined in [helper.ts:114](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L114)*
 
 **Parameters:**
 
@@ -387,7 +394,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[cleanClientName](_helper_.helper.md#protected-cleanclientname)*
 
-*Defined in [helper.ts:122](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L122)*
+*Defined in [helper.ts:122](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L122)*
 
 **Parameters:**
 
@@ -405,7 +412,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[getCurrentSeason](_helper_.helper.md#protected-getcurrentseason)*
 
-*Defined in [helper.ts:94](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L94)*
+*Defined in [helper.ts:94](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L94)*
 
 **Returns:** *void*
 
@@ -415,7 +422,7 @@ ___
 
 ▸ **getPurchasable**(`platform`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [index.ts:837](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L837)*
+*Defined in [index.ts:844](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L844)*
 
 **Parameters:**
 
@@ -433,7 +440,7 @@ ___
 
 *Implementation of [CodAPIInterface](../interfaces/_interface_.codapi.codapiinterface.md)*
 
-*Defined in [index.ts:46](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L46)*
+*Defined in [index.ts:53](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L53)*
 
 **Returns:** *Promise‹any›*
 
@@ -445,7 +452,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[postReq](_helper_.helper.md#protected-postreq)*
 
-*Defined in [helper.ts:228](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L228)*
+*Defined in [helper.ts:228](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L228)*
 
 **Parameters:**
 
@@ -465,7 +472,7 @@ ___
 
 *Implementation of [CodAPIInterface](../interfaces/_interface_.codapi.codapiinterface.md)*
 
-*Defined in [index.ts:795](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/index.ts#L795)*
+*Defined in [index.ts:802](https://github.com/antonedvard/act-cod-api/blob/955978e/src/index.ts#L802)*
 
 **Parameters:**
 
@@ -484,7 +491,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[sendPostRequest](_helper_.helper.md#protected-sendpostrequest)*
 
-*Defined in [helper.ts:193](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L193)*
+*Defined in [helper.ts:193](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L193)*
 
 **Parameters:**
 
@@ -503,7 +510,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[sendRequest](_helper_.helper.md#protected-sendrequest)*
 
-*Defined in [helper.ts:158](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L158)*
+*Defined in [helper.ts:158](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L158)*
 
 **Parameters:**
 
@@ -521,7 +528,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[sendRequestUserInfoOnly](_helper_.helper.md#protected-sendrequestuserinfoonly)*
 
-*Defined in [helper.ts:126](https://github.com/antonedvard/act-cod-api/blob/cd055d0/src/helper.ts#L126)*
+*Defined in [helper.ts:126](https://github.com/antonedvard/act-cod-api/blob/955978e/src/helper.ts#L126)*
 
 **Parameters:**
 
