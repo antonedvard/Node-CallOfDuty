@@ -52,9 +52,15 @@ class CodAPI extends helper_1.default {
             all: "all",
         };
     }
+    /**
+     * Returns the current season of the MW Battlepass.
+     */
     get currentSeason() {
         return this.__currentSeason;
     }
+    /**
+     * Logs in the user, must be called before anything else to have access to the API.
+     */
     login() {
         return new Promise((resolve, reject) => {
             let randomId = uniqid_1.default();
@@ -125,6 +131,14 @@ class CodAPI extends helper_1.default {
         }
         return this.getGameData(gamertag, platform, game, url);
     }
+    /**
+     * Getter for the Infinite Warefare game API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.IW.stats() // Returns current players stats for IW.
+     * ```
+     */
     get IW() {
         // GAME: Call of Duty Infinite Warfare: COD IW: IW;
         const game = "IW";
@@ -135,6 +149,14 @@ class CodAPI extends helper_1.default {
             },
         };
     }
+    /**
+     * Getter for the World War II game API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.WWII.stats() // Returns current players stats for WWII.
+     * ```
+     */
     get WWII() {
         // GAME: Call of Duty World War II: COD WWII;
         const game = "WWII";
@@ -153,6 +175,14 @@ class CodAPI extends helper_1.default {
             },
         };
     }
+    /**
+     * Getter for the Black Ops 3 game API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.BO3.stats() // Returns current players stats for BO3.
+     * ```
+     */
     get BO3() {
         // GAME: Call of Duty Black Ops 3: COD BO3;
         const game = "BO3";
@@ -176,6 +206,14 @@ class CodAPI extends helper_1.default {
         });
         return InterFace;
     }
+    /**
+     * Getter for the Black Ops 4 game API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.BO4.stats() // Returns current players stats for BO4.
+     * ```
+     */
     get BO4() {
         // GAME: Call of Duty Black Ops 4: COD BO4;
         const game = "BO4";
@@ -271,6 +309,14 @@ class CodAPI extends helper_1.default {
         });
         return InterFace;
     }
+    /**
+     * Getter for the Modern Warfare game API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.MW.stats() // Returns current players stats for MW.
+     * ```
+     */
     get MW() {
         // GAME: Call of Duty Modern Warfare: COD MW;
         const game = "MW";
@@ -493,6 +539,14 @@ class CodAPI extends helper_1.default {
             },
         };
     }
+    /**
+     * Getter for the Current Logged in user API.
+     * Example:
+     * ```js
+     *  ...
+     *  cod.me.info() // Returns current logged in user info.
+     * ```
+     */
     get me() {
         return {
             info: () => {
@@ -569,7 +623,7 @@ class CodAPI extends helper_1.default {
         };
     }
     /**
-     *
+     * Fuzzy search for players by player username and the platform.
      *
      */
     search(gamertag = this.platformUser, platform = this.userPlatform) {

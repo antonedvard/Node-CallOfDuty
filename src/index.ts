@@ -45,11 +45,15 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
   constructor(config: CODAPI.CODAPICONFIG) {
     super(config);
   }
-
+  /**
+   * Returns the current season of the MW Battlepass.
+   */
   get currentSeason(): number {
     return this.__currentSeason as number;
   }
-
+  /**
+   * Logs in the user, must be called before anything else to have access to the API.
+   */
   login(): Promise<any> {
     return new Promise((resolve, reject) => {
       let randomId = uniqid();
@@ -148,7 +152,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
 
     return this.getGameData(gamertag, platform, game, url);
   }
-
+  /**
+   * Getter for the Infinite Warefare game API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.IW.stats() // Returns current players stats for IW.
+   * ```
+   */
   get IW(): CODAPI.IWInterface {
     // GAME: Call of Duty Infinite Warfare: COD IW: IW;
     const game: CODAPI.OneOfGames = "IW";
@@ -164,7 +175,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
       },
     };
   }
-
+  /**
+   * Getter for the World War II game API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.WWII.stats() // Returns current players stats for WWII.
+   * ```
+   */
   get WWII(): CODAPI.WWIIInterface {
     // GAME: Call of Duty World War II: COD WWII;
     const game: CODAPI.OneOfGames = "WWII";
@@ -201,7 +219,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
       },
     };
   }
-
+  /**
+   * Getter for the Black Ops 3 game API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.BO3.stats() // Returns current players stats for BO3.
+   * ```
+   */
   get BO3(): CODAPI.BO3Interface {
     // GAME: Call of Duty Black Ops 3: COD BO3;
     const game: CODAPI.OneOfGames = "BO3";
@@ -232,7 +257,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
 
     return InterFace;
   }
-
+  /**
+   * Getter for the Black Ops 4 game API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.BO4.stats() // Returns current players stats for BO4.
+   * ```
+   */
   get BO4(): CODAPI.BO4Interface {
     // GAME: Call of Duty Black Ops 4: COD BO4;
     const game: CODAPI.OneOfGames = "BO4";
@@ -379,7 +411,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
 
     return InterFace;
   }
-
+  /**
+   * Getter for the Modern Warfare game API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.MW.stats() // Returns current players stats for MW.
+   * ```
+   */
   get MW(): CODAPI.MWGameInterface {
     // GAME: Call of Duty Modern Warfare: COD MW;
     const game: CODAPI.OneOfGames = "MW";
@@ -675,7 +714,14 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
       },
     };
   }
-
+  /**
+   * Getter for the Current Logged in user API.
+   * Example:
+   * ```js
+   *  ...
+   *  cod.me.info() // Returns current logged in user info.
+   * ```
+   */
   get me(): CODAPI.LoggedInUserInterface {
     return {
       info: (): Promise<any> => {
@@ -796,7 +842,7 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
   }
 
   /**
-   *
+   * Fuzzy search for players by player username and the platform.
    *
    */
   search(

@@ -41,7 +41,7 @@ start();
 
 *Overrides [Helper](_helper_.helper.md).[constructor](_helper_.helper.md#constructor)*
 
-*Defined in [index.ts:43](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L43)*
+*Defined in [index.ts:43](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L43)*
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ Name | Type |
 
 *Inherited from [Helper](_helper_.helper.md).[_ssoCOOKIE](_helper_.helper.md#_ssocookie)*
 
-*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/helper.ts#L17)*
+*Defined in [helper.ts:17](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/helper.ts#L17)*
 
 ## Accessors
 
@@ -67,7 +67,14 @@ Name | Type |
 
 • **get BO3**(): *[BO3Interface](../interfaces/_interface_.codapi.bo3interface.md)*
 
-*Defined in [index.ts:205](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L205)*
+*Defined in [index.ts:230](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L230)*
+
+Getter for the Black Ops 3 game API.
+Example:
+```js
+ ...
+ cod.BO3.stats() // Returns current players stats for BO3.
+```
 
 **Returns:** *[BO3Interface](../interfaces/_interface_.codapi.bo3interface.md)*
 
@@ -77,7 +84,14 @@ ___
 
 • **get BO4**(): *[BO4Interface](../interfaces/_interface_.codapi.bo4interface.md)*
 
-*Defined in [index.ts:236](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L236)*
+*Defined in [index.ts:268](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L268)*
+
+Getter for the Black Ops 4 game API.
+Example:
+```js
+ ...
+ cod.BO4.stats() // Returns current players stats for BO4.
+```
 
 **Returns:** *[BO4Interface](../interfaces/_interface_.codapi.bo4interface.md)*
 
@@ -87,7 +101,14 @@ ___
 
 • **get IW**(): *[IWInterface](../interfaces/_interface_.codapi.iwinterface.md)*
 
-*Defined in [index.ts:152](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L152)*
+*Defined in [index.ts:163](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L163)*
+
+Getter for the Infinite Warefare game API.
+Example:
+```js
+ ...
+ cod.IW.stats() // Returns current players stats for IW.
+```
 
 **Returns:** *[IWInterface](../interfaces/_interface_.codapi.iwinterface.md)*
 
@@ -97,7 +118,14 @@ ___
 
 • **get MW**(): *[MWGameInterface](../interfaces/_interface_.codapi.mwgameinterface.md)*
 
-*Defined in [index.ts:383](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L383)*
+*Defined in [index.ts:422](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L422)*
+
+Getter for the Modern Warfare game API.
+Example:
+```js
+ ...
+ cod.MW.stats() // Returns current players stats for MW.
+```
 
 **Returns:** *[MWGameInterface](../interfaces/_interface_.codapi.mwgameinterface.md)*
 
@@ -107,7 +135,14 @@ ___
 
 • **get WWII**(): *[WWIIInterface](../interfaces/_interface_.codapi.wwiiinterface.md)*
 
-*Defined in [index.ts:168](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L168)*
+*Defined in [index.ts:186](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L186)*
+
+Getter for the World War II game API.
+Example:
+```js
+ ...
+ cod.WWII.stats() // Returns current players stats for WWII.
+```
 
 **Returns:** *[WWIIInterface](../interfaces/_interface_.codapi.wwiiinterface.md)*
 
@@ -117,7 +152,7 @@ ___
 
 • **get battlepass**(): *[BattlePassInterface](../interfaces/_interface_.codapi.battlepassinterface.md)*
 
-*Defined in [index.ts:643](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L643)*
+*Defined in [index.ts:682](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L682)*
 
 **Returns:** *[BattlePassInterface](../interfaces/_interface_.codapi.battlepassinterface.md)*
 
@@ -127,7 +162,9 @@ ___
 
 • **get currentSeason**(): *number*
 
-*Defined in [index.ts:49](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L49)*
+*Defined in [index.ts:51](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L51)*
+
+Returns the current season of the MW Battlepass.
 
 **Returns:** *number*
 
@@ -139,7 +176,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[debug](_helper_.helper.md#debug)*
 
-*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/helper.ts#L86)*
+*Defined in [helper.ts:86](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/helper.ts#L86)*
 
 **Returns:** *boolean*
 
@@ -149,7 +186,7 @@ ___
 
 • **get feed**(): *object*
 
-*Defined in [index.ts:769](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L769)*
+*Defined in [index.ts:815](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L815)*
 
 **Returns:** *object*
 
@@ -165,7 +202,7 @@ ___
 
 *Inherited from [Helper](_helper_.helper.md).[loggedIn](_helper_.helper.md#loggedin)*
 
-*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/helper.ts#L82)*
+*Defined in [helper.ts:82](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/helper.ts#L82)*
 
 **Returns:** *boolean*
 
@@ -175,7 +212,14 @@ ___
 
 • **get me**(): *[LoggedInUserInterface](../interfaces/_interface_.codapi.loggedinuserinterface.md)*
 
-*Defined in [index.ts:679](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L679)*
+*Defined in [index.ts:725](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L725)*
+
+Getter for the Current Logged in user API.
+Example:
+```js
+ ...
+ cod.me.info() // Returns current logged in user info.
+```
 
 **Returns:** *[LoggedInUserInterface](../interfaces/_interface_.codapi.loggedinuserinterface.md)*
 
@@ -185,7 +229,7 @@ ___
 
 ▸ **getPurchasable**(`platform`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [index.ts:844](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L844)*
+*Defined in [index.ts:890](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L890)*
 
 **Parameters:**
 
@@ -203,7 +247,9 @@ ___
 
 *Implementation of [CodAPIInterface](../interfaces/_interface_.codapi.codapiinterface.md)*
 
-*Defined in [index.ts:53](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L53)*
+*Defined in [index.ts:57](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L57)*
+
+Logs in the user, must be called before anything else to have access to the API.
 
 **Returns:** *Promise‹any›*
 
@@ -215,7 +261,9 @@ ___
 
 *Implementation of [CodAPIInterface](../interfaces/_interface_.codapi.codapiinterface.md)*
 
-*Defined in [index.ts:802](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/index.ts#L802)*
+*Defined in [index.ts:848](https://github.com/antonedvard/act-cod-api/blob/78b32b5/src/index.ts#L848)*
+
+Fuzzy search for players by player username and the platform.
 
 **Parameters:**
 
