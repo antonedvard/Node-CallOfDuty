@@ -14,7 +14,7 @@
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[multiplayer](_interface_.codapi.subgameinterface.md#optional-multiplayer)*
 
-*Defined in [interface.ts:111](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L111)*
+*Defined in [interface.ts:111](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L111)*
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[warzone](_interface_.codapi.subgameinterface.md#optional-warzone)*
 
-*Defined in [interface.ts:110](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L110)*
+*Defined in [interface.ts:110](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L110)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 *Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[zombie](_interface_.codapi.subgameinterface.md#optional-zombie)*
 
-*Defined in [interface.ts:69](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L69)*
+*Defined in [interface.ts:69](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L69)*
 
 ## Methods
 
@@ -44,7 +44,7 @@ ___
 
 *Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[achievements](_interface_.codapi.subgameinterface.md#optional-achievements)*
 
-*Defined in [interface.ts:72](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L72)*
+*Defined in [interface.ts:72](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L72)*
 
 **Parameters:**
 
@@ -64,7 +64,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[analysis](_interface_.codapi.subgameinterface.md#optional-analysis)*
 
-*Defined in [interface.ts:109](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L109)*
+*Defined in [interface.ts:109](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L109)*
 
 **Parameters:**
 
@@ -83,7 +83,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[battle](_interface_.codapi.subgameinterface.md#optional-battle)*
 
-*Defined in [interface.ts:108](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L108)*
+*Defined in [interface.ts:108](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L108)*
 
 **Parameters:**
 
@@ -102,7 +102,7 @@ ___
 
 *Inherited from [SubGameInterface](_interface_.codapi.subgameinterface.md).[community](_interface_.codapi.subgameinterface.md#optional-community)*
 
-*Defined in [interface.ts:75](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L75)*
+*Defined in [interface.ts:75](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L75)*
 
 **Returns:** *Promise‹any›*
 
@@ -114,7 +114,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[friends](_interface_.codapi.subgameinterface.md#optional-friends)*
 
-*Defined in [interface.ts:104](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L104)*
+*Defined in [interface.ts:104](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L104)*
 
 **Parameters:**
 
@@ -133,7 +133,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[leaderboard](_interface_.codapi.subgameinterface.md#optional-leaderboard)*
 
-*Defined in [interface.ts:105](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L105)*
+*Defined in [interface.ts:105](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L105)*
 
 **Parameters:**
 
@@ -152,7 +152,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[loot](_interface_.codapi.subgameinterface.md#optional-loot)*
 
-*Defined in [interface.ts:106](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L106)*
+*Defined in [interface.ts:106](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L106)*
 
 **Parameters:**
 
@@ -171,7 +171,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[stats](_interface_.codapi.subgameinterface.md#stats)*
 
-*Defined in [interface.ts:103](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L103)*
+*Defined in [interface.ts:103](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L103)*
 
 **Parameters:**
 
@@ -190,7 +190,7 @@ ___
 
 *Overrides [SubGameInterface](_interface_.codapi.subgameinterface.md).[weekly](_interface_.codapi.subgameinterface.md#optional-weekly)*
 
-*Defined in [interface.ts:107](https://github.com/antonedvard/act-cod-api/blob/955978e/src/interface.ts#L107)*
+*Defined in [interface.ts:107](https://github.com/antonedvard/act-cod-api/blob/cc9726f/src/interface.ts#L107)*
 
 **Parameters:**
 

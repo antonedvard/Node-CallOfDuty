@@ -6,6 +6,7 @@ module.exports = {
   out: "docs",
   tsconfig: "./tsconfig.json",
   excludePrivate: true,
+  excludeProtected: true,
   theme: "vuepress",
   disableSources: false,
 };
