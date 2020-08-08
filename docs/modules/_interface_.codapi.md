@@ -6,7 +6,7 @@
 
 Ƭ **CODAPICONFIG**: *object*
 
-*Defined in [interface.ts:33](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L33)*
+*Defined in [interface.ts:33](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L33)*
 
 #### Type declaration:
 
@@ -30,7 +30,7 @@ ___
 
 Ƭ **DateForDataInterface**: *object*
 
-*Defined in [interface.ts:45](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L45)*
+*Defined in [interface.ts:45](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L45)*
 
 #### Type declaration:
 
@@ -44,7 +44,7 @@ ___
 
 Ƭ **OneOfGames**: *"IW" | "WWII" | "BO3" | "BO4" | "MW"*
 
-*Defined in [interface.ts:29](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L29)*
+*Defined in [interface.ts:29](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L29)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 Ƭ **OneOfPlatforms**: *"battle" | "steam" | "psn" | "xbl" | "acti" | "uno" | "unoid" | "all"*
 
-*Defined in [interface.ts:19](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L19)*
+*Defined in [interface.ts:19](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L19)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 Ƭ **OneOfPlayTypes**: *"MP" | "WZ" | "ZB" | "BO"*
 
-*Defined in [interface.ts:31](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L31)*
+*Defined in [interface.ts:31](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L31)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 Ƭ **Platforms**: *object*
 
-*Defined in [interface.ts:2](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L2)*
+*Defined in [interface.ts:2](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L2)*
 
 #### Type declaration:
 
@@ -94,7 +94,7 @@ ___
 
 Ƭ **RATELIMITCONFIG**: *object*
 
-*Defined in [interface.ts:13](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L13)*
+*Defined in [interface.ts:13](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L13)*
 
 #### Type declaration:
 

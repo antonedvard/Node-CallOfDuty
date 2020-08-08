@@ -191,19 +191,7 @@ class CodAPI extends helper_1.default {
                 let url = this.buildUri(`crm/cod/v2/title/bo3/platform/${platform}/gamer/${gamertag}/profile/`);
                 return this.getGameData(gamertag, platform, game, url);
             },
-            zombie: {
-                stats: () => __awaiter(this, void 0, void 0, function* () { }),
-                combat: () => __awaiter(this, void 0, void 0, function* () { }),
-            },
         };
-        Object.defineProperty(InterFace, "zombie", {
-            get: () => {
-                return {
-                    stats: () => __awaiter(this, void 0, void 0, function* () { }),
-                    combat: () => __awaiter(this, void 0, void 0, function* () { }),
-                };
-            },
-        });
         return InterFace;
     }
     /**

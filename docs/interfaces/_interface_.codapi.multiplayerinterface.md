@@ -10,7 +10,7 @@
 
 ▸ **combat**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:63](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L63)*
+*Defined in [interface.ts:63](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L63)*
 
 **Parameters:**
 
@@ -27,7 +27,7 @@ ___
 
 ▸ **maps**(): *Promise‹any›*
 
-*Defined in [interface.ts:64](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L64)*
+*Defined in [interface.ts:64](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L64)*
 
 **Returns:** *Promise‹any›*
 
@@ -37,7 +37,7 @@ ___
 
 ▸ **stats**(`gamertag?`: undefined | string, `platform?`: [OneOfPlatforms](../modules/_interface_.codapi.md#oneofplatforms)): *Promise‹any›*
 
-*Defined in [interface.ts:62](https://github.com/antonedvard/act-cod-api/blob/c1ab9cf/src/interface.ts#L62)*
+*Defined in [interface.ts:62](https://github.com/antonedvard/act-cod-api/blob/84b1492/src/interface.ts#L62)*
 
 **Parameters:**
 

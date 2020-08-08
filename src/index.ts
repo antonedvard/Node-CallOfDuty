@@ -240,20 +240,7 @@ class CodAPI extends Helper implements CODAPI.CodAPIInterface {
         );
         return this.getGameData(gamertag, platform, game, url);
       },
-      zombie: {
-        stats: async () => {},
-        combat: async () => {},
-      },
     };
-
-    Object.defineProperty(InterFace, "zombie", {
-      get: (): CODAPI.ZombieInterface => {
-        return {
-          stats: async () => {},
-          combat: async () => {},
-        };
-      },
-    });
 
     return InterFace;
   }
